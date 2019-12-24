@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\dogan\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\dogan\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_2Color.1314340675.00" t="ExcludeRecursive" />
+    <e p="C:\Users\dogan\Unity\2Color" t="IncludeRecursive">
+      <e p="2Color.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Resources" t="Include">
+          <e p="Crowd" t="Include">
+            <e p="Crowd.cs" t="Include" />
+            <e p="CrowdPool.cs" t="Include" />
+            <e p="Person" t="Include">
+              <e p="Person.cs" t="Include" />
+              <e p="PersonPool.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Level" t="Include">
+            <e p="LevelProperties.cs" t="Include" />
+            <e p="Levels" t="Include">
+              <e p="level_0.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="LevelManager.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Obstacles" t="Include">
+            <e p="Obstacle.cs" t="Include" />
+            <e p="Obstacle1" t="Include">
+              <e p="Obstacle1.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
