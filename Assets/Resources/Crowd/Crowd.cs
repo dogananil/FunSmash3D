@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class Crowd : MonoBehaviour
 {
-    [SerializeField] private PersonPool pool;
+    [SerializeField] public PersonPool pool;
+    [SerializeField] public List<Person> crowd = new List<Person>();
     [SerializeField] private GameObject crowdPrefab;
     [SerializeField] private int size;
-    public void Start()
+
+    public void InitializeCrowd()
     {
         for (int i = 0; i < size; i++)
         {
@@ -16,7 +18,9 @@ public class Crowd : MonoBehaviour
             {
                 return;
             }
-            pool.GivePerson().transform.SetParent(this.transform);
+            crowd.Add(pool.GivePerson());
+            crowd[i].transform.SetParent(this.transform);
+           // Debug.Log(crowd.Count);
         }
     }
     public void Run()

@@ -1,19 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CrowdPool : MonoBehaviour
 {
-    [SerializeField] public List<Crowd> pool = new List<Crowd>();
+    [NonSerialized]public Stack<Crowd> pool = new Stack<Crowd>();
     [SerializeField] private Crowd crowd;
     [SerializeField] private int size;
-    // Start is called before the first frame update
-    void Start()
+
+    public void InitializeCrowdPool()
     {
         for (int i = 0; i < size; i++)
         {
             Crowd newCrowd = Instantiate(crowd,this.transform);
+            pool.Push(newCrowd);
         } 
     }
-    
+    public Crowd GiveCrowd()
+    {
+        
+        return pool.Pop();
+    }
 }

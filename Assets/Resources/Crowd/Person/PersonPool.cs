@@ -8,8 +8,8 @@ public class PersonPool : MonoBehaviour
     [SerializeField] private Person person;
     [NonSerialized] public Stack<Person> pool=new Stack<Person>();
     [SerializeField] private int size;
-    // Start is called before the first frame update
-    void Start()
+
+    public void InitializePersonPool()
     {
         for (int i = 0; i < size; i++)
         {
@@ -18,7 +18,6 @@ public class PersonPool : MonoBehaviour
             pool.Push(person);
         }
     }
-
     public void TakePerson(Person newPerson)
     {
 
