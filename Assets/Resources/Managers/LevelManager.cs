@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CrowdPool crowdPool;
     public ObstaclePool obstaclePool;
     public static LevelManager instance;
+    public Crowd currentCrowd;
     public List<GameObject> levelPiece=new List<GameObject>();
 
     private void Awake()
@@ -22,14 +23,14 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateLevel(4);
+        LoadLevel(4);
     }
 
-    public void CreateLevel(int size)
+    public void LoadLevel(int size)
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
-        for (int i = 0; i < levelProperties.levelPieces.Length*2; i++)
+        for (int i = 0; i <= levelProperties.levelPieces.Length*2; i++)
         {
             GameObject levelBase =
                 i % 2 == 0 ? Instantiate(chillBase, this.transform) : Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i%levelProperties.levelPieces.Length].obstacleType].transform.gameObject, this.transform);
@@ -42,15 +43,14 @@ public class LevelManager : MonoBehaviour
 
     public void GetCrowd()
     {
-        Crowd currentCrowd = crowdPool.GiveCrowd();
+        currentCrowd = crowdPool.GiveCrowd();
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
-        SetLocationForCrowd(currentCrowd);
-        currentCrowd.Run();
+        SetLocationForCrowd();
     }
 
-    private void SetLocationForCrowd(Crowd currentCrowd)
+    private void SetLocationForCrowd()
     {
         int cols = (int)Mathf.Sqrt(currentCrowd.crowd.Count);
         int rows = (int)(((int)Mathf.Sqrt(currentCrowd.crowd.Count)) == Mathf.Sqrt(currentCrowd.crowd.Count) ? Mathf.Sqrt(currentCrowd.crowd.Count) : (int)Mathf.Sqrt(currentCrowd.crowd.Count) + 1);

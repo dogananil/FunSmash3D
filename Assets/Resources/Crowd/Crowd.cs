@@ -11,6 +11,7 @@ public class Crowd : MonoBehaviour
     [SerializeField] private int size;
     [SerializeField] private Crowd currentCrowd;
     private float speed = 5f;
+    private bool stopRun = false;
     public void InitializeCrowd()
     {
         for (int i = 0; i < size; i++)
@@ -28,7 +29,7 @@ public class Crowd : MonoBehaviour
 
     private void Update()
     {
-        if (currentCrowd == null)
+        if (currentCrowd == null || stopRun)
         {
             return;
         }
@@ -37,11 +38,17 @@ public class Crowd : MonoBehaviour
 
     public void Run()
     {
+       
         currentCrowd = this;
+        stopRun = false;
     }
 
     public void Die()
     {
         
+    }
+    public void Stop()
+    {
+        stopRun = true;
     }
 }
