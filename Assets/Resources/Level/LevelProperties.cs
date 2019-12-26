@@ -7,7 +7,6 @@ public class LevelProperties
 {
     [SerializeField] 
     public string crowdColor;
-    public int levelSize;
     public int crowdSize;
     public Pieces[] levelPieces;
     [Serializable]

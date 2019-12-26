@@ -14,8 +14,8 @@ public abstract class Obstacle:MonoBehaviour
         activate = true;
     }
 
-    public abstract void Smash(Person gonnaDie);
-    public abstract void PlayAnimation();
+    public abstract void Smash();
+    public abstract IEnumerator PlayAnimation();
     
     public enum  TYPE
     {

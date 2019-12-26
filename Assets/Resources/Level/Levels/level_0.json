@@ -1,3 +1,14 @@
 {
-  
+  "crowdColor":"#F2505D",
+  "crowdSize": 4,
+  "levelPieces": [
+    {
+      "obstacleTypes": 1,
+      "obstacleSpeed": 1.0
+    },
+    {
+      "obstacleTypes": 1,
+      "obstacleSpeed": 1.0
+    }
+  ]
 }
