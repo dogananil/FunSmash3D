@@ -14,6 +14,7 @@ public class CrowdPool : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             Crowd newCrowd = Instantiate(crowd,this.transform);
+            newCrowd.transform.gameObject.SetActive(false);
             pool.Push(newCrowd);
         } 
     }

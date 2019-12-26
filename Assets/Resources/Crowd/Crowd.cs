@@ -20,6 +20,7 @@ public class Crowd : MonoBehaviour
             }
             crowd.Add(pool.GivePerson());
             crowd[i].transform.SetParent(this.transform);
+            crowd[i].transform.gameObject.SetActive(true);
            // Debug.Log(crowd.Count);
         }
     }
