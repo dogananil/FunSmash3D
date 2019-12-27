@@ -55,13 +55,13 @@ public class LevelManager : MonoBehaviour
         int cols = (int)Mathf.Sqrt(currentCrowd.crowd.Count);
         int rows = (int)(((int)Mathf.Sqrt(currentCrowd.crowd.Count)) == Mathf.Sqrt(currentCrowd.crowd.Count) ? Mathf.Sqrt(currentCrowd.crowd.Count) : (int)Mathf.Sqrt(currentCrowd.crowd.Count) + 1);
         Vector3 middleOffset= new Vector3(rows*currentCrowd.crowd[0].transform.lossyScale.x/2 -currentCrowd.crowd[0].transform.lossyScale.x/2,0,-1*cols*currentCrowd.crowd[0].transform.lossyScale.z/2 + currentCrowd.crowd[0].transform.lossyScale.z/2);
-        Vector3 newPosition=Vector3.zero + new Vector3(0f, currentCrowd.crowd[0].transform.lossyScale.y / 2,0f) ;
+        Vector3 newPosition=Vector3.zero + new Vector3(0f, 0f,0f) ;
         float rowScaleTemp =newPosition.x;
         float colScaleTemp = newPosition.z;
         for (int i = 1; i <= currentCrowd.crowd.Count; i++)
         {
             currentCrowd.crowd[i-1].transform.position = newPosition +middleOffset ;
-            newPosition = new Vector3(((i+1) % cols == 1 ? rowScaleTemp-=currentCrowd.crowd[i-1].transform.lossyScale.x : newPosition.x),  newPosition.y,  ((i+1) % cols == 1 ?  colScaleTemp = 0f  : colScaleTemp += currentCrowd.crowd[0].transform.lossyScale.z));
+            newPosition = new Vector3(((i+1) % cols == 1 ? rowScaleTemp-=currentCrowd.crowd[i-1].transform.lossyScale.x+1 : newPosition.x),  newPosition.y,  ((i+1) % cols == 1 ?  colScaleTemp = 0f  : colScaleTemp += currentCrowd.crowd[0].transform.lossyScale.z+1));
         }
     }
 }

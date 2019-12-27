@@ -10,7 +10,7 @@ public class Crowd : MonoBehaviour
     [SerializeField] private GameObject crowdPrefab;
     [SerializeField] private int size;
     [SerializeField] private Crowd currentCrowd;
-    private float speed = 5f;
+    private float speed = 3f;
     private bool stopRun = false;
     public void InitializeCrowd()
     {
@@ -29,7 +29,7 @@ public class Crowd : MonoBehaviour
 
     private void Update()
     {
-        if (currentCrowd == null || stopRun)
+        if (currentCrowd == null || stopRun || !TabController.INSTANCE.run)
         {
             return;
         }
@@ -38,7 +38,6 @@ public class Crowd : MonoBehaviour
 
     public void Run()
     {
-       
         currentCrowd = this;
         stopRun = false;
     }
