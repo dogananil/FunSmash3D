@@ -11,21 +11,25 @@ public class Person : MonoBehaviour
 
     private void Update()
     {
-        
-            run.SetBool("run",TabController.INSTANCE.run);
-            
-        
+
+        run.SetBool("run", TabController.INSTANCE.run);
+
+
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Obstacle"))
         {
-            Debug.Log("Box");
             TabController.INSTANCE.run = false;
             this.GetComponent<Rigidbody>().isKinematic = false;
             this.GetComponent<Animator>().enabled = false;
         }
-
+        else if (other.transform.CompareTag("DeathBase"))
+        {
+            this.transform.gameObject.SetActive(false);
+            this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+            this.transform.position = Vector3.zero;
+        }
     }
 }
