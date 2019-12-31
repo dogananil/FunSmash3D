@@ -17,16 +17,16 @@ public class Person : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Obstacle"))
         {
-            TabController.INSTANCE.run = false;
-            this.GetComponent<Rigidbody>().isKinematic = false;
             this.GetComponent<Animator>().enabled = false;
+            TabController.INSTANCE.run = false;
         }
         else if (other.transform.CompareTag("DeathBase"))
         {
+            Debug.Log("Die");
             this.transform.gameObject.SetActive(false);
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             this.transform.position = Vector3.zero;

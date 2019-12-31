@@ -9,45 +9,37 @@ public class Obstacle1 : Obstacle
     [SerializeField] private GameObject boxHand;
     [SerializeField] private AnimationCurve speedCurve;
     [SerializeField] private AnimationCurve speedCurve2;
+    [System.NonSerialized] private Rigidbody body;
+    [System.NonSerialized] private Vector3 start;
+
     private void Awake()
     {
         this.type = TYPE.TYPE1;
+        body = boxHand.GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        start = body.transform.localPosition + transform.position;
     }
 
     public override void Smash()
     {
-     StartCoroutine(PlayAnimation());
+        StartCoroutine(PlayAnimation());
     // Destroy(gonnaDie);
     }
 
     public override IEnumerator PlayAnimation()
     {
-        Rigidbody body = boxHand.GetComponent<Rigidbody>();
-        /*Rigidbody body = boxHand.GetComponent<Rigidbody>();
-
-        body.velocity = -boxHand.transform.up;
-        
-        yield return new WaitForSeconds(1.0f); 
-        
-        body.velocity = boxHand.transform.up;
-        
-        yield return new WaitForSeconds(1.0f);*/
-        Vector3 startPosition = boxHand.transform.position;
         float timeStep=0f;
-        /*while (timeStep<1f)
-        {
-            boxHand.transform.position=startPosition-boxHand.transform.up * speedCurve.Evaluate(timeStep)*boxHand.transform.localScale.z*2 ;
-            timeStep += Time.deltaTime;
-            yield return null;
-        }
-        boxHand.transform.position=startPosition-boxHand.transform.up * speedCurve.Evaluate(1.0f)*boxHand.transform.localScale.z*2 ;*/
         while (timeStep<1f)
         {
-            body.velocity=-boxHand.transform.up*boxHand.transform.localScale.z*2*speedCurve2.Evaluate(timeStep)*2f;
+            body.MovePosition(start - body.transform.up * speedCurve2.Evaluate(timeStep) * 10.0f);    
             timeStep += Time.deltaTime;
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
-       body.velocity=Vector3.zero;
+
+        TabController.INSTANCE.run = true;
     }
     
 }

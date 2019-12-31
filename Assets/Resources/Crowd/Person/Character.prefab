@@ -229,12 +229,11 @@ GameObject:
   - component: {fileID: 4191898019087548781}
   - component: {fileID: 6099737328299027479}
   - component: {fileID: 5919833317272420950}
-  - component: {fileID: 3113192993052379971}
   - component: {fileID: 943954888487412543}
   - component: {fileID: 8166251259975299713}
   m_Layer: 8
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,22 +288,6 @@ MonoBehaviour:
   run: {fileID: 6099737328299027479}
   die: {fileID: 0}
   personPrefab: {fileID: 0}
---- !u!54 &3113192993052379971
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898403052710949758}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
 --- !u!137 &943954888487412543
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -385,7 +368,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898403052710949758}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.8970131, y: 2.6897342, z: 1.0949905}
@@ -1612,6 +1595,7 @@ GameObject:
   - component: {fileID: 4455836735075722219}
   - component: {fileID: 5598065829614410896}
   - component: {fileID: 1368207376504672487}
+  - component: {fileID: 7562636807512831911}
   m_Layer: 11
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -1666,6 +1650,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7562636807512831911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7968374684019009471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1fc5d1d862ac8b42a1c6947529943fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8180854976190216933
 GameObject:
   m_ObjectHideFlags: 0

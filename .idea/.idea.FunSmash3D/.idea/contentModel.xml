@@ -21,6 +21,8 @@
             <e p="LevelProperties.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
+            <e p="CameraManager.cs" t="Include" />
+            <e p="DeathManager.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="LevelManager.cs" t="Include" />
           </e>
