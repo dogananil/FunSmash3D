@@ -8,6 +8,7 @@ public class Person : MonoBehaviour
 {
     [SerializeField] public Animator run, die;
     [SerializeField] private GameObject personPrefab;
+    [SerializeField] private AnimationCurve dieCurve;
 
     private void Update()
     {
@@ -23,13 +24,36 @@ public class Person : MonoBehaviour
         {
             this.GetComponent<Animator>().enabled = false;
             TabController.INSTANCE.run = false;
+            this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+           // StartCoroutine(DieSlowly());
         }
         else if (other.transform.CompareTag("DeathBase"))
         {
-            Debug.Log("Die");
-            this.transform.gameObject.SetActive(false);
-            this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
-            this.transform.position = Vector3.zero;
+            
+            Die();
         }
+    }
+
+    private IEnumerator DieSlowly()
+    {
+        Debug.Log("DieSlowly");
+
+        float timeStep =0f;
+        SkinnedMeshRenderer personColor = this.transform.GetComponent<SkinnedMeshRenderer>();
+        while(timeStep<3f)
+        {
+            personColor.material.color = new Color(personColor.material.color.r,personColor.material.color.g,personColor.material.color.b,dieCurve.Evaluate(timeStep/3f));
+            timeStep += Time.deltaTime;
+            Debug.Log("PersonColor********* Time Step ==== " + personColor.material.color.a);
+            yield return new WaitForEndOfFrame();
+        }
+
+    }
+    private void Die()
+    {
+        Debug.Log("Die");
+        this.transform.gameObject.SetActive(false);
+        this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+        this.transform.position = Vector3.zero;
     }
 }

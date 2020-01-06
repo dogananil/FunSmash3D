@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Obstacle1 : Obstacle
+public class ObstacleBox : Obstacle
 {
     [SerializeField] private GameObject boxHand;
     [SerializeField] private AnimationCurve speedCurve;
@@ -34,7 +34,7 @@ public class Obstacle1 : Obstacle
         float timeStep=0f;
         while (timeStep<1f)
         {
-            body.MovePosition(start - body.transform.up * speedCurve2.Evaluate(timeStep) * 10.0f);    
+            body.MovePosition(start + body.transform.forward * speedCurve2.Evaluate(timeStep) * 10.0f);    
             timeStep += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }

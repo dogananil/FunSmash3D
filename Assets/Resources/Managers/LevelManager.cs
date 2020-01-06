@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public Crowd currentCrowd;
     public List<GameObject> levelPiece=new List<GameObject>();
+    public List<GameObject> enemyPieces = new List<GameObject>();
 
     private void Awake()
     {
@@ -30,11 +31,12 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
-        for (int i = 0; i <= levelProperties.levelPieces.Length*2; i++)
+
+        for (int i = 0; i < levelProperties.levelPieces.Length; i++)
         {
-            GameObject levelBase =
-                i % 2 == 0 ? Instantiate(chillBase, this.transform) : Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i%levelProperties.levelPieces.Length].obstacleType].transform.gameObject, this.transform);
+            GameObject levelBase =levelProperties.levelPieces[i].obstacleType == Obstacle.TYPE.TYPE0 ? Instantiate(chillBase, this.transform) : Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i].obstacleType].transform.gameObject, this.transform);
             levelPiece.Add(levelBase);
+            if(levelProperties.levelPieces[i].obstacleType != Obstacle.TYPE.TYPE0) enemyPieces.Add(levelBase);
             levelBase.transform.localPosition = start;
             start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x,0,0);
         }

@@ -268,6 +268,7 @@ MonoBehaviour:
   obstaclePool: {fileID: 1763688753}
   currentCrowd: {fileID: 0}
   levelPiece: []
+  enemyPieces: []
 --- !u!1 &929205356
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,7 +681,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePool:
+  - {fileID: 0}
   - {fileID: 5877844785097926269, guid: dd16c28ad19fb5849bade00ef15e9557, type: 3}
+  - {fileID: 0}
 --- !u!1 &1965249156
 GameObject:
   m_ObjectHideFlags: 0

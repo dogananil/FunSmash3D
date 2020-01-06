@@ -17,4 +17,5 @@ public class CameraManager : MonoBehaviour
     {
         this.transform.position = start +new Vector3(LevelManager.instance.currentCrowd.transform.position.x,0f,0f);
     }
+    
 }

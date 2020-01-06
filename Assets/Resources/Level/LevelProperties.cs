@@ -12,6 +12,7 @@ public class LevelProperties
     [Serializable]
     public class Pieces
     {
+
         public Obstacle.TYPE obstacleType;
         public float obstacleSpeed;
         

@@ -2,12 +2,32 @@
   "crowdColor":"#F2505D",
   "crowdSize": 4,
   "levelPieces": [
-    {
-      "obstacleTypes": 1,
+  {
+      "obstacleType": 0,
       "obstacleSpeed": 1.0
     },
     {
-      "obstacleTypes": 1,
+      "obstacleType": 1,
+      "obstacleSpeed": 2.0
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 2.0
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 2.0
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0
+    },
+	{
+      "obstacleType": 1,
+      "obstacleSpeed": 1.0
+    },
+    {
+      "obstacleType": 0,
       "obstacleSpeed": 1.0
     }
   ]
