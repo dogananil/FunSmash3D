@@ -301,7 +301,7 @@ MonoBehaviour:
     type: 3}
   crowdPool: {fileID: 984545792}
   obstaclePool: {fileID: 1763688753}
-  currentCrowd: {fileID: 0}
+  currentCrowd: {fileID: 1022836873}
   levelPiece: []
   enemyPieces: []
 --- !u!1 &929205356
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 0}
-  followOffset: {x: -15.3, y: 16.2, z: -14.9}
+  followOffset: {x: -15.3, y: 10.9, z: -10.35}
   followSpeed: 1
   shakeCurve:
     serializedVersion: 2

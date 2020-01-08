@@ -63,7 +63,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
-    - _HeightFogEnd: -2.2
+    - _HeightFogEnd: 2.24
     - _HeightFogStart: -35.5
     - _Metallic: 0
     - _Mode: 0
@@ -75,6 +75,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+    - _Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HeightFogColor: {r: 0.098039225, g: 0.6784314, b: 0.52156866, a: 1}
