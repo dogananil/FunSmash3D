@@ -1,6 +1,8 @@
 {
   "crowdColor":"#F2505D",
   "crowdSize": 62,
+  "crowdMinSpeed":3.0,
+  "crowdMaxSpeed":4.0,
   "levelPieces": [
   {
       "obstacleType": 0,

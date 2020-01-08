@@ -8,9 +8,7 @@ public class Crowd : MonoBehaviour
     [SerializeField] public PersonPool pool;
     [SerializeField] public List<Person> crowd = new List<Person>();
     [SerializeField] private GameObject crowdPrefab;
-    [SerializeField] private Crowd currentCrowd;
-    private float speed = 3f;
-    private bool stopRun = false;
+   // [SerializeField] private Crowd currentCrowd;
     public void InitializeCrowd(int size)
     {
         for (int i = 0; i < size; i++)
@@ -25,28 +23,5 @@ public class Crowd : MonoBehaviour
            // Debug.Log(crowd.Count);
         }
     }
-
-    private void Update()
-    {
-        if (currentCrowd == null || stopRun || !TabController.INSTANCE.run)
-        {
-            return;
-        }
-        currentCrowd.transform.position+= Vector3.right*Time.deltaTime*speed;
-    }
-
-    public void Run()
-    {
-        currentCrowd = this;
-        stopRun = false;
-    }
-
-    public void Die()
-    {
-        
-    }
-    public void Stop()
-    {
-        stopRun = true;
-    }
+   
 }

@@ -49,7 +49,7 @@ public class TabController : MonoBehaviour
             }*/
             if(tabCount==0)
             {
-                LevelManager.instance.currentCrowd.Run();
+                Person.Run();
                 run = true;
              //   chillBaseIndex += 2;
             }

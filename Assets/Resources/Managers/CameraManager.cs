@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     //    this.transform.position = start + new Vector3(LevelManager.instance.currentCrowd.transform.position.x,0f,0f);
     //}
 
-    [SerializeField] private Transform followObject;
+    //[SerializeField] private Transform followObject;
     [SerializeField] public Vector3 followOffset;
     [SerializeField] public float followSpeed;
     [System.NonSerialized] private float realtimeFollowSpeed;

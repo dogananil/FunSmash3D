@@ -8,7 +8,8 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject chillBase;
     [SerializeField] private GameObject obstacle;
-                     private Vector3 start = Vector3.zero;
+    [SerializeField] private PersonPool personPool;
+    private Vector3 start = Vector3.zero;
     [SerializeField] private CrowdPool crowdPool;
     public ObstaclePool obstaclePool;
     public static LevelManager instance;
@@ -48,10 +49,13 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
+        Debug.Log(Random.Range(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed));
+        personPool.InitializePersonPool(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed);
         CreateLevel(levelProperties.crowdSize, levelProperties);
     }
     public void GetCrowd(int size)
     {
+       
         currentCrowd.InitializeCrowd(size);
         currentCrowd = crowdPool.GiveCrowd();
         currentCrowd.transform.SetParent(this.transform);

@@ -9,7 +9,6 @@ public class DeathManager : MonoBehaviour
     {
         if (other.transform.CompareTag("DeathBase"))
         {
-            Debug.Log("Die");
             this.transform.parent.gameObject.SetActive(false);
             this.transform.parent.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             this.transform.parent.position = Vector3.zero;

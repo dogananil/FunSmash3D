@@ -299,6 +299,7 @@ MonoBehaviour:
     type: 3}
   obstacle: {fileID: 6225811317442989909, guid: dd16c28ad19fb5849bade00ef15e9557,
     type: 3}
+  personPool: {fileID: 1536986471}
   crowdPool: {fileID: 984545792}
   obstaclePool: {fileID: 1763688753}
   currentCrowd: {fileID: 1022836873}
@@ -445,7 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43c655e512d92642b99cedebd7ca437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followObject: {fileID: 0}
   followOffset: {x: -15.3, y: 10.9, z: -10.35}
   followSpeed: 1
   shakeCurve:
@@ -639,7 +639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a893f88bc2051f549b9de477be887115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  personPool: {fileID: 1536986471}
   crowd: {fileID: 1022836873}
   crowdPool: {fileID: 984545792}
 --- !u!1 &1536986470
