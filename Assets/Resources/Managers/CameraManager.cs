@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] public float followSpeed;
     [System.NonSerialized] private float realtimeFollowSpeed;
     [System.NonSerialized] private Vector3 startPosition;
-    [System.NonSerialized] public bool canFollow = false;
+    [System.NonSerialized] public bool canFollow = true;
     [System.NonSerialized] public Vector3 targetPosition = Vector3.zero;
     [System.NonSerialized] public Vector3 shakeOffset = Vector3.zero;
     [System.NonSerialized] public Coroutine shakeRoutine = null;
@@ -33,7 +33,8 @@ public class CameraManager : MonoBehaviour
         realtimeFollowSpeed = Mathf.Lerp(realtimeFollowSpeed, followSpeed, Time.deltaTime * 1.0f);
         if (canFollow)
         {
-            targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
+            //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
+            targetPosition = Vector3.Lerp(targetPosition, LevelManager.instance.currentCrowd.transform.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
         }
         else
         {

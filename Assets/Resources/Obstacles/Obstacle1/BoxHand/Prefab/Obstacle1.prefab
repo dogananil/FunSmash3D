@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3706253580085039475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -50, z: 0}
+  m_LocalScale: {x: 10, y: 100, z: 10}
   m_Children: []
   m_Father: {fileID: 6225811317442989905}
   m_RootOrder: 1
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2abb598f7b64b84ca82e5b2fc9a903c, type: 2}
+  - {fileID: 2100000, guid: 9c36778d169d2b3438c738d6cc7a5c0b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -296,7 +296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de63ea6af0121b4483818a74a114a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  obstacleType: 0
+  obstacleSpeed: 0
+  obstacleData:
+    obstacleType: 0
+    obstacleSpeed: 0
   boxHand: {fileID: 5738228831047678749}
   speedCurve:
     serializedVersion: 2

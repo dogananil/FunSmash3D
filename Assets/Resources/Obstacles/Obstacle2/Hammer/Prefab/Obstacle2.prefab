@@ -139,7 +139,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a1ab7bc9042142ac8a29822982d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  obstacleType: 0
+  obstacleSpeed: 0
+  obstacleData:
+    obstacleType: 0
+    obstacleSpeed: 0
   hammer: {fileID: 5086255971316892621}
   speedCurve2:
     serializedVersion: 2
@@ -214,8 +218,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7680701718082245602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalPosition: {x: 0, y: -50, z: 0}
+  m_LocalScale: {x: 10, y: 100, z: 10}
   m_Children: []
   m_Father: {fileID: 5752459935806858003}
   m_RootOrder: 1
@@ -245,7 +249,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f13abf8906d272498c87e1d2222956d, type: 2}
+  - {fileID: 2100000, guid: 9c36778d169d2b3438c738d6cc7a5c0b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
