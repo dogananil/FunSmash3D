@@ -5,17 +5,71 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    private Vector3 start;
+    //void Update()
+    //{
+    //    this.transform.position = start + new Vector3(LevelManager.instance.currentCrowd.transform.position.x,0f,0f);
+    //}
 
-    private void Start()
+    [SerializeField] private Transform followObject;
+    [SerializeField] public Vector3 followOffset;
+    [SerializeField] public float followSpeed;
+    [System.NonSerialized] private float realtimeFollowSpeed;
+    [System.NonSerialized] private Vector3 startPosition;
+    [System.NonSerialized] public bool canFollow = false;
+    [System.NonSerialized] public Vector3 targetPosition = Vector3.zero;
+    [System.NonSerialized] public Vector3 shakeOffset = Vector3.zero;
+    [System.NonSerialized] public Coroutine shakeRoutine = null;
+    [SerializeField] public AnimationCurve shakeCurve;
+
+    void Awake()
     {
-        start = this.transform.position;
+        startPosition = transform.position;
+        targetPosition = startPosition;
+        realtimeFollowSpeed = followSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        this.transform.position = start +new Vector3(LevelManager.instance.currentCrowd.transform.position.x,0f,0f);
+        realtimeFollowSpeed = Mathf.Lerp(realtimeFollowSpeed, followSpeed, Time.deltaTime * 1.0f);
+        if (canFollow)
+        {
+            targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
+        }
+        else
+        {
+            targetPosition = Vector3.Lerp(targetPosition, Vector3.up * 2.0f, Time.deltaTime * realtimeFollowSpeed);
+        }
+        transform.position = targetPosition + shakeOffset;
     }
-    
+
+    public void Reset()
+    {
+        transform.position = startPosition;
+        targetPosition = startPosition;
+        canFollow = false;
+        followSpeed = 1.0f;
+        followOffset = Vector3.up;
+    }
+
+    public void Shake(float magnitude, float speed)
+    {
+        if (shakeRoutine != null)
+        {
+            StopCoroutine(shakeRoutine);
+        }
+        shakeRoutine = StartCoroutine(ShakeRoutine(magnitude, speed));
+    }
+
+    private IEnumerator ShakeRoutine(float magnitude, float speed)
+    {
+        shakeOffset = Vector3.zero;
+        float timeStep = 0.0f;
+        while (timeStep < 1.0f)
+        {
+            shakeOffset = Vector3.up * shakeCurve.Evaluate(timeStep) * magnitude;
+            timeStep += Time.deltaTime * speed;
+            yield return new WaitForEndOfFrame();
+        }
+        shakeOffset = Vector3.zero;
+    }
 }

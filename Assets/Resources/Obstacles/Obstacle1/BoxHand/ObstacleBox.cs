@@ -14,7 +14,7 @@ public class ObstacleBox : Obstacle
 
     private void Awake()
     {
-        this.type = TYPE.TYPE1;
+        this.obstacleType = TYPE.TYPE1;
         body = boxHand.GetComponent<Rigidbody>();
     }
 

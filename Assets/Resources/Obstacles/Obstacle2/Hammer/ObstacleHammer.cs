@@ -14,7 +14,7 @@ public class ObstacleHammer : Obstacle
 
     private void Awake()
     {
-        this.type = TYPE.TYPE1;
+        this.obstacleType = TYPE.TYPE1;
        
     }
 

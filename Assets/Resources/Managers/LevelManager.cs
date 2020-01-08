@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class LevelManager : MonoBehaviour
     public ObstaclePool obstaclePool;
     public static LevelManager instance;
     public Crowd currentCrowd;
-    public List<GameObject> levelPiece=new List<GameObject>();
-    public List<GameObject> enemyPieces = new List<GameObject>();
+    public List<Obstacle> levelPiece=new List<Obstacle>();
+    public List<Obstacle> enemyPieces = new List<Obstacle>();
 
     private void Awake()
     {
@@ -26,19 +27,21 @@ public class LevelManager : MonoBehaviour
     {
         LoadLevel(4);
     }
-
     public void LoadLevel(int size)
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
-
         for (int i = 0; i < levelProperties.levelPieces.Length; i++)
         {
-            GameObject levelBase =levelProperties.levelPieces[i].obstacleType == Obstacle.TYPE.TYPE0 ? Instantiate(chillBase, this.transform) : Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i].obstacleType].transform.gameObject, this.transform);
+            Obstacle levelBase = Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i].obstacleType], this.transform);
+            levelBase.SetObstacleData(levelProperties.levelPieces[i].obstacleSpeed);
             levelPiece.Add(levelBase);
-            if(levelProperties.levelPieces[i].obstacleType != Obstacle.TYPE.TYPE0) enemyPieces.Add(levelBase);
+            if (levelProperties.levelPieces[i].obstacleType != Obstacle.TYPE.TYPE0)
+            {
+                enemyPieces.Add(levelBase.GetComponent<Obstacle>());
+            }
             levelBase.transform.localPosition = start;
-            start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x,0,0);
+            start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x, 0, 0);
         }
         GetCrowd();
     }
@@ -52,18 +55,45 @@ public class LevelManager : MonoBehaviour
         SetLocationForCrowd();
     }
 
+    void Update()
+    {
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 direction = Vector3.right * 2.0f;
+        for (int i = 0; i < 6; i++)
+        {
+            Vector3 n = Quaternion.Euler(0, i * 60.0f, 0) * direction;
+            Gizmos.DrawLine(Vector3.zero, n);
+        }
+    }
+
     private void SetLocationForCrowd()
     {
-        int cols = (int)Mathf.Sqrt(currentCrowd.crowd.Count);
-        int rows = (int)(((int)Mathf.Sqrt(currentCrowd.crowd.Count)) == Mathf.Sqrt(currentCrowd.crowd.Count) ? Mathf.Sqrt(currentCrowd.crowd.Count) : (int)Mathf.Sqrt(currentCrowd.crowd.Count) + 1);
-        Vector3 middleOffset= new Vector3(rows*currentCrowd.crowd[0].transform.lossyScale.x/2 -currentCrowd.crowd[0].transform.lossyScale.x/2,0,-1*cols*currentCrowd.crowd[0].transform.lossyScale.z/2 + currentCrowd.crowd[0].transform.lossyScale.z/2);
-        Vector3 newPosition=Vector3.zero + new Vector3(0f, 0f,0f) ;
-        float rowScaleTemp =newPosition.x;
-        float colScaleTemp = newPosition.z;
-        for (int i = 1; i <= currentCrowd.crowd.Count; i++)
+        currentCrowd.crowd[0].transform.position = Vector3.zero;
+
+        float angle = 0.0f;
+        float angleAdder = 72.0f;
+        float offset = 0.75f;
+        Vector3 direction = Vector3.right;
+        Vector3 n = Vector3.zero;
+
+        for (int i = 1; i < currentCrowd.crowd.Count; i++)
         {
-            currentCrowd.crowd[i-1].transform.position = newPosition +middleOffset ;
-            newPosition = new Vector3(((i+1) % cols == 1 ? rowScaleTemp-=currentCrowd.crowd[i-1].transform.lossyScale.x+1 : newPosition.x),  newPosition.y,  ((i+1) % cols == 1 ?  colScaleTemp = 0f  : colScaleTemp += currentCrowd.crowd[0].transform.lossyScale.z+1));
+            direction = Vector3.right * (offset + Random.Range(-0.3f, 0.3f));
+
+            n = Quaternion.Euler(0, angle + Random.Range(-4.0f, 4.0f), 0) * direction;
+            currentCrowd.crowd[i].transform.position = n;
+
+            angle += angleAdder;
+            if (angle >= 350.0f)
+            {
+                angle = 0.0f;
+                angleAdder *= 0.55f;
+                offset += 1.25f;
+            }
         }
+
     }
 }
