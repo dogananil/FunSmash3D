@@ -20,7 +20,7 @@ public class CrowdPool : MonoBehaviour
     }
     public Crowd GiveCrowd()
     {
-        
+        InitializeCrowdPool();
         return pool.Pop();
     }
 }

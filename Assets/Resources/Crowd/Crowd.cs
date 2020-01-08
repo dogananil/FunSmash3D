@@ -8,11 +8,10 @@ public class Crowd : MonoBehaviour
     [SerializeField] public PersonPool pool;
     [SerializeField] public List<Person> crowd = new List<Person>();
     [SerializeField] private GameObject crowdPrefab;
-    [SerializeField] private int size;
     [SerializeField] private Crowd currentCrowd;
     private float speed = 3f;
     private bool stopRun = false;
-    public void InitializeCrowd()
+    public void InitializeCrowd(int size)
     {
         for (int i = 0; i < size; i++)
         {

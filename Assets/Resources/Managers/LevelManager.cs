@@ -25,12 +25,11 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadLevel(4);
+        LoadLevel(level);
     }
-    public void LoadLevel(int size)
+    public void CreateLevel(int size,LevelProperties levelProperties)
     {
-        TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
-        LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
+       
         for (int i = 0; i < levelProperties.levelPieces.Length; i++)
         {
             Obstacle levelBase = Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i].obstacleType], this.transform);
@@ -43,20 +42,22 @@ public class LevelManager : MonoBehaviour
             levelBase.transform.localPosition = start;
             start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x, 0, 0);
         }
-        GetCrowd();
+        GetCrowd(levelProperties.crowdSize);
     }
-
-    public void GetCrowd()
+    public void LoadLevel(int level)
     {
+        TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
+        LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
+        CreateLevel(levelProperties.crowdSize, levelProperties);
+    }
+    public void GetCrowd(int size)
+    {
+        currentCrowd.InitializeCrowd(size);
         currentCrowd = crowdPool.GiveCrowd();
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
         SetLocationForCrowd();
-    }
-
-    void Update()
-    {
     }
 
     private void OnDrawGizmos()

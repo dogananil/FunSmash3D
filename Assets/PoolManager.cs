@@ -12,8 +12,8 @@ public class PoolManager : MonoBehaviour
     void Awake()
     {
         personPool.InitializePersonPool();
-        crowd.InitializeCrowd();
-        crowdPool.InitializeCrowdPool();
+       // crowd.InitializeCrowd();
+        //crowdPool.InitializeCrowdPool();
     }
     
     
