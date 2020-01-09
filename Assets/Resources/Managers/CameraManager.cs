@@ -34,13 +34,29 @@ public class CameraManager : MonoBehaviour
         if (canFollow)
         {
             //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
-            targetPosition = Vector3.Lerp(targetPosition, LevelManager.instance.currentCrowd.transform.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
+            Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
+            Debug.DrawLine(Vector3.zero, midPoint);
+            targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset, Time.deltaTime * realtimeFollowSpeed);
         }
         else
         {
             targetPosition = Vector3.Lerp(targetPosition, Vector3.up * 2.0f, Time.deltaTime * realtimeFollowSpeed);
         }
         transform.position = targetPosition + shakeOffset;
+    }
+
+    public Vector3 MidPointOfChildren(Transform transform)
+    {
+        Vector3 mid = Vector3.zero;
+        foreach (Transform child in transform)
+        {
+            if (!child.GetComponent<Person>().dead)
+            {
+                mid += child.position;
+            }
+        }
+        mid /= transform.childCount;
+        return mid;
     }
 
     public void Reset()

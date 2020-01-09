@@ -14,7 +14,7 @@ public class Person : MonoBehaviour
 
     [SerializeField] private Color color;
     [System.NonSerialized] private MeshRenderer meshRenderer;
-    [System.NonSerialized] private bool dead = false;
+    [System.NonSerialized] public bool dead = false;
     private bool stop = false;
 
 
@@ -33,7 +33,7 @@ public class Person : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Obstacle"))
+        if (other.transform.CompareTag("Obstacle") && !dead)
         {
             dead = true;
             this.GetComponent<Animator>().enabled = false;
