@@ -20,7 +20,7 @@ public class Person : MonoBehaviour
 
     private void Update()
     {
-        if (this == null || stopRun || stop)
+        if (this == null || stopRun || !TabController.INSTANCE.run || stop)
         {
             return;
         }
@@ -33,11 +33,11 @@ public class Person : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Obstacle") && !dead)
+        if (other.transform.CompareTag("Obstacle"))
         {
             dead = true;
             this.GetComponent<Animator>().enabled = false;
-            TabController.INSTANCE.run = false;
+           
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
             StopPerson();
