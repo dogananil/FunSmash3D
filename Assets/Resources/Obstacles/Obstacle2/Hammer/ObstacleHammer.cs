@@ -14,7 +14,7 @@ public class ObstacleHammer : Obstacle
 
     private void Awake()
     {
-        this.obstacleType = TYPE.TYPE1;
+        this.obstacleType = TYPE.TYPE2;
         body = hammer.GetComponent<Rigidbody>();
     }
 
@@ -34,9 +34,7 @@ public class ObstacleHammer : Obstacle
         float timeStep = 0f;
         while (timeStep < 1f)
         {
-            // body.MovePosition(start + body.transform.forward * speedCurve2.Evaluate(timeStep) * 10.0f);
-            //hammer.transform.rotation = Quaternion.Slerp(start, end , speedCurve2.Evaluate(timeStep));
-            //hammer.transform.rotation = Quaternion.RotateTowards(start, end , speedCurve2.Evaluate(timeStep));
+            
             body.MoveRotation(Quaternion.Euler(speedCurve2.Evaluate(timeStep) * -60.0f, 0.0f, 0.0f));
 
             timeStep += Time.deltaTime * obstacleSpeed;
