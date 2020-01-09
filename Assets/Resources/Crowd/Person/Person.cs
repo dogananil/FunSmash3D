@@ -20,7 +20,7 @@ public class Person : MonoBehaviour
 
     private void Update()
     {
-        if (this == null || stopRun || !TabController.INSTANCE.run || stop)
+        if (this == null || stopRun || stop)
         {
             return;
         }
