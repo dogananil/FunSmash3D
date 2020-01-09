@@ -15,16 +15,20 @@ public class Person : MonoBehaviour
     [SerializeField] private Color color;
     [System.NonSerialized] private MeshRenderer meshRenderer;
     [System.NonSerialized] private bool dead = false;
+    private bool stop = false;
 
 
     private void Update()
     {
-        if (this == null || stopRun || !TabController.INSTANCE.run)
+        if (this == null || stopRun || !TabController.INSTANCE.run || stop)
         {
             return;
         }
         this.transform.position += Vector3.right * Time.deltaTime * speed;
+        //Debug.Log(speed);
         run.SetBool("run", TabController.INSTANCE.run);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +40,8 @@ public class Person : MonoBehaviour
             TabController.INSTANCE.run = false;
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
+            StopPerson();
+
 
         }
         else if (other.transform.CompareTag("DeathBase"))
@@ -44,7 +50,7 @@ public class Person : MonoBehaviour
         }
     }
 
-    private IEnumerator DieSlowly()
+    /* private IEnumerator DieSlowly()
     {
         Debug.Log("DieSlowly");
 
@@ -58,7 +64,7 @@ public class Person : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-    }
+    }*/
     private void Die()
     {
         Debug.Log("Die");
@@ -66,12 +72,13 @@ public class Person : MonoBehaviour
         this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
         this.transform.position = Vector3.zero;
     }
-    public static void Run()
+    public static void RunAll()
     {
         stopRun = false;
     }
-    public void Stop()
+    public void StopPerson()
     {
-        stopRun = true;
+        stop = true;
+
     }
 }

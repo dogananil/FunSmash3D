@@ -49,7 +49,6 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
-        Debug.Log(Random.Range(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed));
         personPool.InitializePersonPool(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed);
         CreateLevel(levelProperties.crowdSize, levelProperties);
     }
