@@ -12,6 +12,10 @@ public class Person : MonoBehaviour
     public float speed;
     private static bool stopRun = false;
 
+    [SerializeField] private Color color;
+    [System.NonSerialized] private MeshRenderer meshRenderer;
+    [System.NonSerialized] private bool dead = false;
+
 
     private void Update()
     {
@@ -20,24 +24,22 @@ public class Person : MonoBehaviour
             return;
         }
         this.transform.position += Vector3.right * Time.deltaTime * speed;
-        //Debug.Log(speed);
         run.SetBool("run", TabController.INSTANCE.run);
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Obstacle"))
         {
+            dead = true;
             this.GetComponent<Animator>().enabled = false;
             TabController.INSTANCE.run = false;
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
-           // StartCoroutine(DieSlowly());
+            ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
+
         }
         else if (other.transform.CompareTag("DeathBase"))
         {
-            
             Die();
         }
     }

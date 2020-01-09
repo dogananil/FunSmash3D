@@ -35,7 +35,7 @@ public class ObstacleBox : Obstacle
         while (timeStep<1f)
         {
             body.MovePosition(start + body.transform.forward * speedCurve2.Evaluate(timeStep) * 10.0f);    
-            timeStep += Time.deltaTime;
+            timeStep += Time.deltaTime * obstacleSpeed;
             yield return new WaitForEndOfFrame();
         }
 

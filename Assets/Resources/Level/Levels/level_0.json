@@ -10,7 +10,7 @@
     },
     {
       "obstacleType": 1,
-      "obstacleSpeed": 2.0
+      "obstacleSpeed": 1.5
     },
 	{
       "obstacleType": 0,
@@ -18,7 +18,7 @@
     },
 	{
       "obstacleType": 2,
-      "obstacleSpeed": 2.0
+      "obstacleSpeed": 0.5
     },
 	{
       "obstacleType": 0,
