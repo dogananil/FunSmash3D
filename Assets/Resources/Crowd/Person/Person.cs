@@ -42,7 +42,7 @@ public class Person : MonoBehaviour
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
 
             StopPerson();
-
+            StartCoroutine(DieSlowly(6.0f));
 
         }
         else if (other.transform.CompareTag("DeathBase"))
@@ -51,29 +51,28 @@ public class Person : MonoBehaviour
         }
         else if(other.transform.CompareTag("FinishBase"))
         {
-            StartCoroutine(Delay(this.speed/2f));
+            StartCoroutine(FinishGame(this.speed/2f));
             
         }
     }
 
-    /* private IEnumerator DieSlowly()
+    private IEnumerator DieSlowly(float seconds)
     {
-        Debug.Log("DieSlowly");
 
-        float timeStep =0f;
-        SkinnedMeshRenderer personColor = this.transform.GetComponent<SkinnedMeshRenderer>();
-        while(timeStep<3f)
+        float timeStep = 0f;
+       // SkinnedMeshRenderer personColor = this.transform.GetComponent<SkinnedMeshRenderer>();
+        while (timeStep < seconds)
         {
-            personColor.material.color = new Color(personColor.material.color.r,personColor.material.color.g,personColor.material.color.b,dieCurve.Evaluate(timeStep/3f));
+           // personColor.material.color = new Color(personColor.material.color.r, personColor.material.color.g, personColor.material.color.b, dieCurve.Evaluate(timeStep / 3f));
             timeStep += Time.deltaTime;
-            Debug.Log("PersonColor********* Time Step ==== " + personColor.material.color.a);
             yield return new WaitForEndOfFrame();
         }
+        Die();
 
-    }*/
+    }
     private void Die()
     {
-        Debug.Log("Die");
+
         this.transform.gameObject.SetActive(false);
         this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
         this.transform.position = Vector3.zero;
@@ -87,12 +86,16 @@ public class Person : MonoBehaviour
         stop = true;
 
     }
-    private IEnumerator Delay(float second)
+    private IEnumerator FinishGame(float second)
     {
-        Debug.Log("Delay");
+
         yield return new WaitForSeconds(second);
         run.SetBool("finish", true);
         StopPerson();
-
+        LevelManager.instance.finishGuys.Add(this);
+        if(LevelManager.instance.finishGuys.Count==LevelManager.instance.currentCrowd.gameObject.transform.childCount)
+        {
+            StartCoroutine(LevelManager.instance.NextLevel(4.0f));
+        }
     }
 }

@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public Crowd currentCrowd;
     [NonSerialized]public List<Obstacle> levelPiece=new List<Obstacle>();
     public List<Obstacle> enemyPieces = new List<Obstacle>();
+    public List<Person> finishGuys = new List<Person>();
 
     private void Awake()
     {
@@ -99,6 +100,18 @@ public class LevelManager : MonoBehaviour
                 offset += 1.25f;
             }
         }
+
+    }
+    public IEnumerator NextLevel(float second)
+    {
+        yield return new WaitForSeconds(second);
+        //DestroyAll()
+        LoadLevel(++level);
+        PlayerPrefs.SetInt("level", level);
+        
+    }
+    private void DestroyAll()
+    {
 
     }
 }
