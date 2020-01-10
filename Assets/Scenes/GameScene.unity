@@ -303,7 +303,6 @@ MonoBehaviour:
   crowdPool: {fileID: 984545792}
   obstaclePool: {fileID: 1763688753}
   currentCrowd: {fileID: 1022836873}
-  levelPiece: []
   enemyPieces: []
 --- !u!1 &929205356
 GameObject:
@@ -593,6 +592,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1069108502
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 898403052710949758, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_Name
+      value: Person
+      objectReference: {fileID: 0}
+    - target: {fileID: 898403052710949758, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099737328299027479, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform 'mixamorig:RightFoot'\n\tTransform
+        'mixamorig:Head'\n\tTransform 'mixamorig:LeftUpLeg'\n\tand more ...\n\tFrom
+        animation clip 'Twist Dance'"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191898019087548781, guid: 461011e870991914dbda272d56975761,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 461011e870991914dbda272d56975761, type: 3}
 --- !u!1 &1441488837
 GameObject:
   m_ObjectHideFlags: 0
@@ -5670,6 +5754,7 @@ MonoBehaviour:
   - {fileID: 5877844785097926269, guid: dd16c28ad19fb5849bade00ef15e9557, type: 3}
   - {fileID: 2924663010302275076, guid: c660e6cafce15624c98a41b0af97dfaf, type: 3}
   - {fileID: 1881713687161581297, guid: b176cbded21825544a2a73a95e5f9e8f, type: 3}
+  - {fileID: 6054671997898555640, guid: 98316272faec7b840ada99a55ad87713, type: 3}
 --- !u!1 &1965249156
 GameObject:
   m_ObjectHideFlags: 0

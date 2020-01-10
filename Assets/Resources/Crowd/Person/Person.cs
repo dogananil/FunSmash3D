@@ -6,7 +6,7 @@ using UnityEngine.Experimental.PlayerLoop;
 
 public class Person : MonoBehaviour
 {
-    [SerializeField] public Animator run, die;
+    [SerializeField] public Animator run, finish;
     [SerializeField] private GameObject personPrefab;
     [SerializeField] private AnimationCurve dieCurve;
     public float speed;
@@ -49,6 +49,11 @@ public class Person : MonoBehaviour
         {
             Die();
         }
+        else if(other.transform.CompareTag("FinishBase"))
+        {
+            StartCoroutine(Delay(this.speed/2f));
+            
+        }
     }
 
     /* private IEnumerator DieSlowly()
@@ -82,5 +87,12 @@ public class Person : MonoBehaviour
         stop = true;
 
     }
-    
+    private IEnumerator Delay(float second)
+    {
+        Debug.Log("Delay");
+        yield return new WaitForSeconds(second);
+        run.SetBool("finish", true);
+        StopPerson();
+
+    }
 }

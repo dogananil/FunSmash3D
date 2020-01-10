@@ -9,7 +9,6 @@ public class TabController : MonoBehaviour
     public static TabController INSTANCE;
     [NonSerialized]public int tabCount;
     
-   // [NonSerialized]private int chillBaseIndex;
     [NonSerialized]private bool waitForCrowd;
     public bool run;
     private void Awake()

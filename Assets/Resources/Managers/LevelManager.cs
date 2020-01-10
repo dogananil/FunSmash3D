@@ -22,10 +22,11 @@ public class LevelManager : MonoBehaviour
         instance = this;
     }
 
-    private int level = 0;
+    private int level;
     // Start is called before the first frame update
     void Start()
     {
+        level=PlayerPrefs.GetInt("Level");
         LoadLevel(level);
     }
     public void CreateLevel(int size,LevelProperties levelProperties)

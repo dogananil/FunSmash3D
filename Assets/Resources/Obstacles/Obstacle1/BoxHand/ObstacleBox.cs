@@ -26,7 +26,6 @@ public class ObstacleBox : Obstacle
     public override void Smash()
     {
         StartCoroutine(PlayAnimation());
-    // Destroy(gonnaDie);
     }
 
     public override IEnumerator PlayAnimation()
