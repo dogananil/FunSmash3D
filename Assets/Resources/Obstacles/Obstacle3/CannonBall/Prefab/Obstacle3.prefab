@@ -112,6 +112,8 @@ MonoBehaviour:
   obstacleData:
     obstacleType: 0
     obstacleSpeed: 0
+    slowMotionSpeed: 0
+  slowMotionSpeed: 0
   cannonBall: {fileID: 7583179650179231583}
   speedCurve2:
     serializedVersion: 2
@@ -175,6 +177,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.0418041
   m_Center: {x: 0.010286927, y: -4.986332, z: -0.010448933}
+--- !u!114 &405908605317065704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7583179650179231583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ba9efe526bbae4f9603cf9f41b551f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1881713685394110038
 PrefabInstance:
   m_ObjectHideFlags: 0

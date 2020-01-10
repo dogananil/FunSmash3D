@@ -9,18 +9,12 @@ public class ObstacleHammer : Obstacle
     [SerializeField] private GameObject hammer;
     [SerializeField] private AnimationCurve speedCurve2;
     [System.NonSerialized] private Rigidbody body;
-    [System.NonSerialized] private Quaternion start;
-    [System.NonSerialized] private Quaternion end = new Quaternion(-90,0,0,0);
+
 
     private void Awake()
     {
         this.obstacleType = TYPE.TYPE2;
         body = hammer.GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-        start =hammer.transform.localRotation;
     }
 
     public override void Smash()

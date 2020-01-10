@@ -6,31 +6,38 @@
   "levelPieces": [
   {
       "obstacleType": 0,
-      "obstacleSpeed": 1.0
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
     {
-      "obstacleType": 3,
-      "obstacleSpeed": 1.0
+      "obstacleType": 1,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":2.0
     },
 	{
       "obstacleType": 0,
-      "obstacleSpeed": 2.0
+      "obstacleSpeed": 2.0,
+	  "slowMotionSpeed":1.0
     },
 	{
       "obstacleType": 2,
-      "obstacleSpeed": 0.5
+      "obstacleSpeed": 0.5,
+	  "slowMotionSpeed":2.0
     },
 	{
       "obstacleType": 0,
-      "obstacleSpeed": 1.0
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
 	{
       "obstacleType": 3,
-      "obstacleSpeed": 1.0
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":2.0
     },
     {
       "obstacleType": 0,
-      "obstacleSpeed": 1.0
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     }
   ]
 }

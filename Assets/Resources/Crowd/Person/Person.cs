@@ -40,6 +40,7 @@ public class Person : MonoBehaviour
            
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
+
             StopPerson();
 
 
@@ -81,4 +82,5 @@ public class Person : MonoBehaviour
         stop = true;
 
     }
+    
 }

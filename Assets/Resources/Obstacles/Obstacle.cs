@@ -8,13 +8,17 @@ public abstract class Obstacle : MonoBehaviour
     [SerializeField] public TYPE obstacleType;
     [SerializeField] public float obstacleSpeed;
     [SerializeField] public ObstacleData obstacleData;
+    [SerializeField] public float slowMotionSpeed;
+   
+
     public void Activate()
     {
         //  activate = true;
     }
-    public void SetObstacleData(float obstacleSpeed)
+    public void SetObstacleData(float obstacleSpeed,float slowMotionSpeed)
     {
         this.obstacleSpeed = obstacleSpeed;
+        this.slowMotionSpeed = slowMotionSpeed;
     }
     public abstract void Smash();
     public abstract IEnumerator PlayAnimation();
@@ -23,9 +27,12 @@ public abstract class Obstacle : MonoBehaviour
     {
         [SerializeField] public TYPE obstacleType;
         [SerializeField] public float obstacleSpeed;
+        [SerializeField] public float slowMotionSpeed;
     }
     public enum TYPE
     {
         TYPE0 = 0, TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5
     }
+    
+    
 }

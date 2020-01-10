@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     public ObstaclePool obstaclePool;
     public static LevelManager instance;
     public Crowd currentCrowd;
-    public List<Obstacle> levelPiece=new List<Obstacle>();
+    [NonSerialized]public List<Obstacle> levelPiece=new List<Obstacle>();
     public List<Obstacle> enemyPieces = new List<Obstacle>();
 
     private void Awake()
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < levelProperties.levelPieces.Length; i++)
         {
             Obstacle levelBase = Instantiate(obstaclePool.obstaclePool[(int)levelProperties.levelPieces[i].obstacleType], this.transform);
-            levelBase.SetObstacleData(levelProperties.levelPieces[i].obstacleSpeed);
+            levelBase.SetObstacleData(levelProperties.levelPieces[i].obstacleSpeed,levelProperties.levelPieces[i].slowMotionSpeed);
             levelPiece.Add(levelBase);
             if (levelProperties.levelPieces[i].obstacleType != Obstacle.TYPE.TYPE0)
             {

@@ -9,20 +9,13 @@ public class ObstacleCannonBall : Obstacle
     [SerializeField] private GameObject cannonBall;
     [SerializeField] private AnimationCurve speedCurve2;
     [System.NonSerialized] private Rigidbody body;
-    [System.NonSerialized] private Quaternion start;
-    [System.NonSerialized] private Quaternion end = new Quaternion(-90, 0, 0, 0);
+  
 
     private void Awake()
     {
         this.obstacleType = TYPE.TYPE3;
         body = cannonBall.GetComponent<Rigidbody>();
     }
-
-    private void Start()
-    {
-        start = cannonBall.transform.localRotation;
-    }
-
     public override void Smash()
     {
         StartCoroutine(PlayAnimation());
