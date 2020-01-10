@@ -20,12 +20,19 @@ public class CameraManager : MonoBehaviour
     [System.NonSerialized] public Vector3 shakeOffset = Vector3.zero;
     [System.NonSerialized] public Coroutine shakeRoutine = null;
     [SerializeField] public AnimationCurve shakeCurve;
+    [SerializeField] public AnimationCurve panCurve;
+    [System.NonSerialized] public Vector3 panOffset = Vector3.zero;
 
     void Awake()
     {
         startPosition = transform.position;
         targetPosition = startPosition;
         realtimeFollowSpeed = followSpeed;
+    }
+
+    private void Start()
+    {
+        //PanOffset(-15.0f, -60.0f, 1.0f, new Vector3(17.0f, 0.0f, -12.0f));
     }
 
     void FixedUpdate()
@@ -36,7 +43,7 @@ public class CameraManager : MonoBehaviour
             //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
             Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
             Debug.DrawLine(Vector3.zero, midPoint);
-            targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset, Time.deltaTime * realtimeFollowSpeed);
+            targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset + panOffset, Time.deltaTime * realtimeFollowSpeed);
         }
         else
         {
@@ -88,5 +95,25 @@ public class CameraManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         shakeOffset = Vector3.zero;
+    }
+
+    public void PanOffset(float transformMagnitude, float angleMagnitude, float speed, Vector3 offset)
+    {
+        panOffset = offset;
+        StartCoroutine(PanRoutine(transformMagnitude, angleMagnitude, speed));
+    }
+
+    private IEnumerator PanRoutine(float transformMagnitude, float angleMagnitude, float speed)
+    {
+        Vector3 startAngles = transform.eulerAngles;
+        float timeStep = 0.0f;
+        while (timeStep < 1.0f)
+        {
+            transform.eulerAngles = (startAngles + Vector3.up * panCurve.Evaluate(timeStep) * angleMagnitude);
+            timeStep += Time.deltaTime * speed;
+            yield return new WaitForEndOfFrame();
+        }
+        transform.eulerAngles = (startAngles + Vector3.up * panCurve.Evaluate(1.0f) * angleMagnitude);
+
     }
 }
