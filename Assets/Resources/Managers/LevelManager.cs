@@ -17,13 +17,14 @@ public class LevelManager : MonoBehaviour
     [NonSerialized]public List<Obstacle> levelPiece=new List<Obstacle>();
     public List<Obstacle> enemyPieces = new List<Obstacle>();
     public List<Person> finishGuys = new List<Person>();
+    public LevelProperties levelProperties;
 
     private void Awake()
     {
         instance = this;
     }
 
-    private int level;
+    public int level;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(int level)
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
-        LevelProperties levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
+        levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
         personPool.InitializePersonPool(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed);
         CreateLevel(levelProperties.crowdSize, levelProperties);
     }
@@ -62,6 +63,7 @@ public class LevelManager : MonoBehaviour
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
+        ScrollBar.INSTANCE.StartProgressBar();
         SetLocationForCrowd();
     }
 
@@ -139,5 +141,6 @@ public class LevelManager : MonoBehaviour
         finishGuys.Clear();
         TabController.INSTANCE.tabCount = 0;
         Person.StopAll();
+        ScrollBar.INSTANCE.ResetProgressBar();
     }
 }

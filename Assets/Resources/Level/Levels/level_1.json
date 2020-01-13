@@ -3,6 +3,7 @@
   "crowdSize": 62,
   "crowdMinSpeed":3.0,
   "crowdMaxSpeed":4.0,
+  "percantageLevelFinish":0.25,
   "levelPieces": [
   {
       "obstacleType": 0,
@@ -35,7 +36,7 @@
 	  "slowMotionSpeed":1.5
     },
     {
-      "obstacleType": 4,
+      "obstacleType": 6,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.0
     }

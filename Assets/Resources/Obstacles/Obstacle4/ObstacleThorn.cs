@@ -24,7 +24,7 @@ public class ObstacleThorn : Obstacle
     private void Start()
     {
         startRight = bodyRight.transform.localPosition + transform.position;
-        Debug.Log(startRight);
+
         startLeft = bodyLeft.transform.localPosition + transform.position;
     }
 
