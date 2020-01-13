@@ -105,13 +105,39 @@ public class LevelManager : MonoBehaviour
     public IEnumerator NextLevel(float second)
     {
         yield return new WaitForSeconds(second);
-        //DestroyAll()
+        DestroyAll();
         LoadLevel(++level);
         PlayerPrefs.SetInt("level", level);
         
     }
     private void DestroyAll()
     {
-
+        for(int i=0;i<this.transform.childCount;i++)
+        {
+            if(this.transform.GetChild(i).transform.name.Contains("Crowd"))
+            {
+                this.transform.GetChild(i).transform.gameObject.SetActive(false);
+                this.transform.GetChild(i).transform.SetParent(crowdPool.transform);
+                
+            }
+            else
+            {
+                Destroy(this.transform.GetChild(i).transform.gameObject);
+            }
+           
+        }
+        for(int i=0;i<crowdPool.pool.Count;i++)
+        {
+            Destroy(crowdPool.transform.GetChild(i).transform.gameObject);
+        }
+        ResetAll();
+    }
+    private void ResetAll()
+    {
+        enemyPieces.Clear();
+        start = Vector3.zero;
+        finishGuys.Clear();
+        TabController.INSTANCE.tabCount = 0;
+        Person.StopAll();
     }
 }

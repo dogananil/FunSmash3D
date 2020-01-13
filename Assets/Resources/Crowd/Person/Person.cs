@@ -86,6 +86,10 @@ public class Person : MonoBehaviour
         stop = true;
 
     }
+    public static void StopAll()
+    {
+        stopRun = true;
+    }
     private IEnumerator FinishGame(float second)
     {
 
