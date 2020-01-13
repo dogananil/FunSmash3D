@@ -31,7 +31,7 @@ public abstract class Obstacle : MonoBehaviour
     }
     public enum TYPE
     {
-        TYPE0 = 0, TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5
+        TYPE0 = 0, TYPE1 = 1, TYPE2 = 2, TYPE3 = 3, TYPE4 = 4, TYPE5 = 5, TYPE6=6
     }
     
     

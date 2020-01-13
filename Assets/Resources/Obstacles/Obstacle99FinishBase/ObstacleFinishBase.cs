@@ -9,7 +9,7 @@ public class ObstacleFinishBase : Obstacle
 
     private void Awake()
     {
-        this.obstacleType = TYPE.TYPE4;
+        this.obstacleType = TYPE.TYPE6;
     }
 
 
