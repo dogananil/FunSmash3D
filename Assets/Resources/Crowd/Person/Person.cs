@@ -47,7 +47,6 @@ public class Person : MonoBehaviour
         }
         else if (other.transform.CompareTag("DeathBase"))
         {
-           // ScrollBar.INSTANCE.LoadProgessBar();
             Die();
         }
         else if(other.transform.CompareTag("FinishBase"))
@@ -101,7 +100,16 @@ public class Person : MonoBehaviour
         LevelManager.instance.finishGuys.Add(this);
         if(LevelManager.instance.finishGuys.Count==LevelManager.instance.currentCrowd.gameObject.transform.childCount)
         {
-            StartCoroutine(LevelManager.instance.NextLevel(4.0f));
+            if(!LevelManager.instance.canNextLevel)
+            {
+                Debug.Log("Game Over");
+                StartCoroutine(LevelManager.instance.LoadSameLevel(1.0f));
+            }
+           else
+            {
+                StartCoroutine(LevelManager.instance.NextLevel(4.0f));
+            }
+            
         }
     }
 }

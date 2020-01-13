@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
     public List<Obstacle> enemyPieces = new List<Obstacle>();
     public List<Person> finishGuys = new List<Person>();
     public LevelProperties levelProperties;
+    public bool canNextLevel;
 
     private void Awake()
     {
@@ -112,6 +113,14 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.SetInt("level", level);
         
     }
+    public IEnumerator LoadSameLevel(float second)
+    {
+        yield return new WaitForSeconds(second);
+        DestroyAll();
+        LoadLevel(level);
+        PlayerPrefs.SetInt("level", level);
+
+    }
     private void DestroyAll()
     {
         for(int i=0;i<this.transform.childCount;i++)
@@ -128,7 +137,7 @@ public class LevelManager : MonoBehaviour
             }
            
         }
-        for(int i=0;i<crowdPool.pool.Count;i++)
+        for(int i=0;i<crowdPool.transform.childCount;i++)
         {
             Destroy(crowdPool.transform.GetChild(i).transform.gameObject);
         }
@@ -139,6 +148,7 @@ public class LevelManager : MonoBehaviour
         enemyPieces.Clear();
         start = Vector3.zero;
         finishGuys.Clear();
+        canNextLevel = false;
         TabController.INSTANCE.tabCount = 0;
         Person.StopAll();
         ScrollBar.INSTANCE.ResetProgressBar();

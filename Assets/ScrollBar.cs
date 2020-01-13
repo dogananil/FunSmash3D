@@ -11,6 +11,7 @@ public class ScrollBar : MonoBehaviour
     public static ScrollBar INSTANCE;
     public TextMeshProUGUI levelText;
     public Slider percantageLevelFinish;
+    private bool confetiBool;
     private void Awake()
     {
         INSTANCE = this;
@@ -26,6 +27,13 @@ public class ScrollBar : MonoBehaviour
     {
         slider.value = (float)((float)LevelManager.instance.levelProperties.crowdSize-LevelManager.instance.currentCrowd.transform.childCount) /(float)LevelManager.instance.levelProperties.crowdSize;
         deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + " / " + (float)LevelManager.instance.levelProperties.crowdSize;
+        if(percantageLevelFinish.value<=slider.value && !confetiBool)
+        {
+            ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_SYSTEM, Color.black);
+            ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
+            confetiBool = true;
+            LevelManager.instance.canNextLevel = true;
+        }
     }
     public void StartProgressBar()
     {
@@ -36,5 +44,6 @@ public class ScrollBar : MonoBehaviour
     public void ResetProgressBar()
     {
         slider.value = 0;
+        confetiBool = false;
     }
 }
