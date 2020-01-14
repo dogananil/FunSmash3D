@@ -7,7 +7,7 @@ using UnityEngine.Experimental.PlayerLoop;
 public class TabController : MonoBehaviour
 {
     public static TabController INSTANCE;
-    [NonSerialized]public int tabCount;
+    public int tabCount;
     
     [NonSerialized]private bool waitForCrowd;
     public bool run;

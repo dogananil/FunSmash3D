@@ -21,7 +21,7 @@
 	  "slowMotionSpeed":1.0
     },
 	{
-      "obstacleType": 5,
+      "obstacleType": 2,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
     },
@@ -31,9 +31,24 @@
 	  "slowMotionSpeed":1.0
     },
 	{
-      "obstacleType": 3,
+      "obstacleType": 1,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
+    },
+	{
+      "obstacleType": 2,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
     {
       "obstacleType": 6,

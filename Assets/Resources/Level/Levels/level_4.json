@@ -1,6 +1,6 @@
 {
   "crowdColor":"#F2505D",
-  "crowdSize": 20,
+  "crowdSize": 35,
   "crowdMinSpeed":3.0,
   "crowdMaxSpeed":4.0,
   "percantageLevelFinish":0.3,
@@ -11,17 +11,17 @@
 	  "slowMotionSpeed":1.0
     },
     {
-      "obstacleType": 2,
+      "obstacleType": 1,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 1,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
     },
 	{
       "obstacleType": 0,
-      "obstacleSpeed": 2.0,
-	  "slowMotionSpeed":1.0
-    },
-	{
-      "obstacleType": 3,
       "obstacleSpeed": 0.5,
 	  "slowMotionSpeed":1.5
     },
@@ -36,11 +36,6 @@
 	  "slowMotionSpeed":1.5
     },
 	{
-      "obstacleType": 0,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.0
-    },
-	{
       "obstacleType": 3,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
@@ -48,7 +43,12 @@
 	{
       "obstacleType": 0,
       "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.0
+	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 5,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.5
     },
     {
       "obstacleType": 6,
