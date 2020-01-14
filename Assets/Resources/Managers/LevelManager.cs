@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     public List<Person> finishGuys = new List<Person>();
     public LevelProperties levelProperties;
     public bool canNextLevel;
+    private bool goToNextLevel; 
 
     private void Awake()
     {
@@ -29,8 +30,17 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level=PlayerPrefs.GetInt("Level");
+        personPool.InitializePersonPool();
+        level =PlayerPrefs.GetInt("Level");
         LoadLevel(level);
+    }
+    private void Update()
+    {
+        if(currentCrowd.transform.childCount==0 && !goToNextLevel)
+        {
+            goToNextLevel = true;
+            StartCoroutine(LevelManager.instance.NextLevel(2.0f));
+        }
     }
     public void CreateLevel(int size,LevelProperties levelProperties)
     {
@@ -53,14 +63,14 @@ public class LevelManager : MonoBehaviour
     {
         TextAsset jsonInfo = Resources.Load<TextAsset>("Level/Levels/level_" + level);
         levelProperties = JsonUtility.FromJson<LevelProperties>(jsonInfo.text);
-        personPool.InitializePersonPool(levelProperties.crowdMinSpeed, levelProperties.crowdMaxSpeed);
+       
         CreateLevel(levelProperties.crowdSize, levelProperties);
     }
     public void GetCrowd(int size)
     {
        
-        currentCrowd.InitializeCrowd(size);
-        currentCrowd = crowdPool.GiveCrowd();
+        currentCrowd.InitializeCrowd(size,levelProperties.crowdMinSpeed,levelProperties.crowdMaxSpeed);
+        //currentCrowd = crowdPool.GiveCrowd();
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
@@ -125,21 +135,24 @@ public class LevelManager : MonoBehaviour
     {
         for(int i=0;i<this.transform.childCount;i++)
         {
-            if(this.transform.GetChild(i).transform.name.Contains("Crowd"))
+            if(this.transform.GetChild(i).gameObject.name=="Crowd")
             {
-                this.transform.GetChild(i).transform.gameObject.SetActive(false);
-                this.transform.GetChild(i).transform.SetParent(crowdPool.transform);
+                currentCrowd.transform.SetParent(crowdPool.transform);
+                if(currentCrowd.transform.childCount!=0)
+                {
+                    
+                    while (currentCrowd.transform.childCount!=0)
+                    {
+                        currentCrowd.transform.GetChild(0).transform.GetComponent<Person>().Die();
+                    }
+                }
                 
             }
             else
             {
                 Destroy(this.transform.GetChild(i).transform.gameObject);
             }
-           
-        }
-        for(int i=0;i<crowdPool.transform.childCount;i++)
-        {
-            Destroy(crowdPool.transform.GetChild(i).transform.gameObject);
+
         }
         ResetAll();
     }
@@ -148,9 +161,11 @@ public class LevelManager : MonoBehaviour
         enemyPieces.Clear();
         start = Vector3.zero;
         finishGuys.Clear();
+        currentCrowd.crowd.Clear();
         canNextLevel = false;
         TabController.INSTANCE.tabCount = 0;
         Person.StopAll();
         ScrollBar.INSTANCE.ResetProgressBar();
+        goToNextLevel = false;
     }
 }

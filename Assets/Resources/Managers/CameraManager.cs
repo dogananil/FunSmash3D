@@ -37,19 +37,24 @@ public class CameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        realtimeFollowSpeed = Mathf.Lerp(realtimeFollowSpeed, followSpeed, Time.deltaTime * 1.0f);
-        if (canFollow)
+        if (LevelManager.instance.currentCrowd != null && LevelManager.instance.currentCrowd.transform.childCount!=0)
         {
-            //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
-            Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
-            Debug.DrawLine(Vector3.zero, midPoint);
-            targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset + panOffset, Time.deltaTime * realtimeFollowSpeed);
+
+
+            realtimeFollowSpeed = Mathf.Lerp(realtimeFollowSpeed, followSpeed, Time.deltaTime * 1.0f);
+            if (canFollow)
+            {
+                //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
+                Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
+                Debug.DrawLine(Vector3.zero, midPoint);
+                targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset + panOffset, Time.deltaTime * realtimeFollowSpeed);
+            }
+            else
+            {
+                targetPosition = Vector3.Lerp(targetPosition, Vector3.up * 2.0f, Time.deltaTime * realtimeFollowSpeed);
+            }
+            transform.position = targetPosition + shakeOffset;
         }
-        else
-        {
-            targetPosition = Vector3.Lerp(targetPosition, Vector3.up * 2.0f, Time.deltaTime * realtimeFollowSpeed);
-        }
-        transform.position = targetPosition + shakeOffset;
     }
 
     public Vector3 MidPointOfChildren(Transform transform)

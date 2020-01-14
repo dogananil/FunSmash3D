@@ -1,6 +1,6 @@
 {
   "crowdColor":"#F2505D",
-  "crowdSize": 62,
+  "crowdSize": 20,
   "crowdMinSpeed":3.0,
   "crowdMaxSpeed":4.0,
   "percantageLevelFinish":0.25,

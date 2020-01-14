@@ -8,9 +8,9 @@ public class Crowd : MonoBehaviour
     [SerializeField] public PersonPool pool;
     [SerializeField] public List<Person> crowd = new List<Person>();
     [SerializeField] private GameObject crowdPrefab;
-   // [SerializeField] private Crowd currentCrowd;
-    public void InitializeCrowd(int size)
+    public void InitializeCrowd(int size,float speedMin,float speedMax)
     {
+        
         for (int i = 0; i < size; i++)
         {
             if (pool.ListIsEmpty())
@@ -18,9 +18,9 @@ public class Crowd : MonoBehaviour
                 return;
             }
             crowd.Add(pool.GivePerson());
+            crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
             crowd[i].transform.SetParent(this.transform);
             crowd[i].transform.gameObject.SetActive(true);
-           // Debug.Log(crowd.Count);
         }
     }
    

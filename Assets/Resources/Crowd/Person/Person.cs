@@ -52,7 +52,6 @@ public class Person : MonoBehaviour
         else if(other.transform.CompareTag("FinishBase"))
         {
             StartCoroutine(FinishGame(this.speed/2f));
-            
         }
     }
 
@@ -70,11 +69,12 @@ public class Person : MonoBehaviour
         Die();
 
     }
-    private void Die()
+    public void Die()
     {
 
         this.transform.gameObject.SetActive(false);
         this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+        this.GetComponent<Animator>().enabled = true;
         this.transform.position = Vector3.zero;
         
     }
@@ -106,10 +106,9 @@ public class Person : MonoBehaviour
                 StartCoroutine(LevelManager.instance.LoadSameLevel(1.0f));
             }
            else
-            {
+           {
                 StartCoroutine(LevelManager.instance.NextLevel(4.0f));
-            }
-            
+           }   
         }
     }
 }

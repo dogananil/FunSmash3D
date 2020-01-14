@@ -9,12 +9,12 @@ public class PersonPool : MonoBehaviour
     [NonSerialized] public Stack<Person> pool=new Stack<Person>();
     [SerializeField] private int size;
 
-    public void InitializePersonPool(float speedMin,float speedMax)
+    public void InitializePersonPool()
     {
         for (int i = 0; i < size; i++)
         {
             Person person = Instantiate(this.person, this.transform);
-            person.speed =UnityEngine.Random.Range(speedMin, speedMax);
+           
             person.gameObject.SetActive(false);
             pool.Push(person);
         }
