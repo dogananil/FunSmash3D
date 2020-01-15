@@ -19,9 +19,10 @@ public class Crowd : MonoBehaviour
             }
 
             crowd.Add(PersonPool.INSTANCE.pool.Pop());
+            crowd[i].personPrefab.gameObject.SetActiveRecursively(true);
+            //crowd[i].personPrefab.gameObject.SetActive(true);
             crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
             crowd[i].personPrefab.transform.SetParent(LevelManager.instance.currentCrowd.transform);
-            crowd[i].personPrefab.transform.gameObject.SetActive(true);
             crowd[i].dead = false;
         }
     }

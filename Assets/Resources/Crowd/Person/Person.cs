@@ -90,9 +90,9 @@ public class Person : MonoBehaviour
     public void Die()
     {
 
-        this.personPrefab.transform.gameObject.SetActive(false);
+        this.personPrefab.gameObject.SetActiveRecursively(false);
+        //this.personPrefab.gameObject.SetActive(false);
         this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
-        Debug.Log(++deathCounter);
         this.personPrefab.GetComponent<Animator>().enabled = true;
         this.personPrefab.transform.position = Vector3.zero;
         stop = false;
@@ -127,7 +127,7 @@ public class Person : MonoBehaviour
             }
            else
            {
-                StartCoroutine(LevelManager.instance.NextLevel(4.0f));
+                StartCoroutine(LevelManager.instance.NextLevel(2.0f));
            }   
         }
     }

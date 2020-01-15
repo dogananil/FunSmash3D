@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
-        Debug.Log(currentCrowd.transform.childCount);
+
         ScrollBar.INSTANCE.StartProgressBar();
         SetLocationForCrowd();
     }
