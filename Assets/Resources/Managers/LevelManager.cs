@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
     {
         personPool.InitializePersonPool();
         level =PlayerPrefs.GetInt("Level");
-        LoadLevel(15);
+        LoadLevel(7);
     }
     private void Update()
     {

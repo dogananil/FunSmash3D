@@ -1,59 +1,59 @@
 {
   "crowdColor":"#F2505D",
-  "crowdSize": 35,
-  "crowdMinSpeed":3.0,
-  "crowdMaxSpeed":4.0,
-  "percantageLevelFinish":0.3,
-  "levelPieces": [
-  {
-      "obstacleType": 0,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.0
-    },
-    {
-      "obstacleType": 1,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 1,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 0,
-      "obstacleSpeed": 0.5,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 0,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.0
-    },
-	{
-      "obstacleType": 2,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 3,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 0,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-	{
-      "obstacleType": 5,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.5
-    },
-    {
-      "obstacleType": 6,
-      "obstacleSpeed": 1.0,
-	  "slowMotionSpeed":1.0
-    }
-  ]
+  "crowdSize": 65,
+  "crowdMinSpeed":5.0,
+  "crowdMaxSpeed":6.0,
+  "percantageLevelFinish":0.75,
+    "levelPieces": [
+        {
+            "obstacleType": 0,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.0
+        },
+        {
+            "obstacleType": 1,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 0,
+            "obstacleSpeed": 0.5,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 1,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 0,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.0
+        },
+        {
+            "obstacleType": 2,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 3,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 0,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 5,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
+        {
+            "obstacleType": 6,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.0
+        }
+    ]
 }

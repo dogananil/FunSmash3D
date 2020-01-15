@@ -29,7 +29,7 @@ public class SlowMotionEffect : MonoBehaviour
         Time.fixedDeltaTime = Time.fixedDeltaTime / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
         Time.maximumDeltaTime= Time.maximumDeltaTime/ LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.fixedDeltaTime * LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
         Time.maximumDeltaTime = Time.maximumDeltaTime / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
