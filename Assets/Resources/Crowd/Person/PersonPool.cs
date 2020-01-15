@@ -6,7 +6,7 @@ using UnityEngine;
 public class PersonPool : MonoBehaviour
 {
     [SerializeField] private Person person;
-    [NonSerialized] public Stack<Person> pool=new Stack<Person>();
+    [NonSerialized] public static Stack<Person> pool=new Stack<Person>();
     [SerializeField] private int size;
 
     public void InitializePersonPool()

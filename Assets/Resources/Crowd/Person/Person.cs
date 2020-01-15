@@ -40,6 +40,7 @@ public class Person : MonoBehaviour
            
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
+            
             ScrollBar.INSTANCE.LoadProgessBar();
             StopPerson();
             StartCoroutine(DieSlowly(6.0f));
@@ -51,6 +52,8 @@ public class Person : MonoBehaviour
         }
         else if(other.transform.CompareTag("FinishBase"))
         {
+            PersonPool.pool.Push(this);
+            Debug.Log(PersonPool.pool.Count);
             StartCoroutine(FinishGame(this.speed/2f));
         }
     }
@@ -74,8 +77,11 @@ public class Person : MonoBehaviour
 
         this.transform.gameObject.SetActive(false);
         this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+        PersonPool.pool.Push(this);
+        Debug.Log(PersonPool.pool.Count);
         this.GetComponent<Animator>().enabled = true;
         this.transform.position = Vector3.zero;
+        stop = false;
         
     }
     public static void RunAll()
