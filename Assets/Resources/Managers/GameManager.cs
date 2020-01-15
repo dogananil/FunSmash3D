@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameAnalyticsSDK;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         INSTANCE = this;
+        GameAnalytics.Initialize();
         Application.targetFrameRate = 60;
     }
 }
