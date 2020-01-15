@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject chillBase;
     [SerializeField] private GameObject obstacle;
-    [SerializeField] private PersonPool personPool;
+    [SerializeField] public PersonPool personPool;
     private Vector3 start = Vector3.zero;
     [SerializeField] private CrowdPool crowdPool;
     public ObstaclePool obstaclePool;
@@ -74,6 +74,7 @@ public class LevelManager : MonoBehaviour
         currentCrowd.transform.SetParent(this.transform);
         currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.transform.position = Vector3.zero;
+        Debug.Log(currentCrowd.transform.childCount);
         ScrollBar.INSTANCE.StartProgressBar();
         SetLocationForCrowd();
     }
@@ -121,7 +122,9 @@ public class LevelManager : MonoBehaviour
         DestroyAll();
         LoadLevel(++level);
         PlayerPrefs.SetInt("level", level);
-        
+        TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) + "___Try " + (int)Time.time);
+
+
     }
     public IEnumerator LoadSameLevel(float second)
     {

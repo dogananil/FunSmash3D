@@ -15,7 +15,9 @@ public class Person : MonoBehaviour
     [SerializeField] private Color color;
     [System.NonSerialized] private MeshRenderer meshRenderer;
     [System.NonSerialized] public bool dead = false;
+    [System.NonSerialized] public bool dead2 = false;
     private bool stop = false;
+    public static int deathCounter = 0;
 
 
     private void Update()
@@ -40,20 +42,33 @@ public class Person : MonoBehaviour
            
             this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
-            
+            if(!dead2)
+            {
+                PersonPool.pool.Push(this);
+
+                dead2 = true;
+            }
             ScrollBar.INSTANCE.LoadProgessBar();
             StopPerson();
-            StartCoroutine(DieSlowly(6.0f));
+            StartCoroutine(DieSlowly(5.0f));
 
         }
         else if (other.transform.CompareTag("DeathBase"))
         {
+            if (!dead2)
+            {
+                PersonPool.pool.Push(this);
+                dead2 = true;
+            }
             Die();
         }
         else if(other.transform.CompareTag("FinishBase"))
         {
-            PersonPool.pool.Push(this);
-            Debug.Log(PersonPool.pool.Count);
+            if (!dead2)
+            {
+                PersonPool.pool.Push(this);
+                dead2 = true;
+            }
             StartCoroutine(FinishGame(this.speed/2f));
         }
     }
@@ -76,9 +91,8 @@ public class Person : MonoBehaviour
     {
 
         this.transform.gameObject.SetActive(false);
-        this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
-        PersonPool.pool.Push(this);
-        Debug.Log(PersonPool.pool.Count);
+        this.transform.SetParent(LevelManager.instance.personPool.transform);
+        Debug.Log(++deathCounter);
         this.GetComponent<Animator>().enabled = true;
         this.transform.position = Vector3.zero;
         stop = false;

@@ -19,7 +19,7 @@ public class PersonPool : MonoBehaviour
             pool.Push(person);
         }
     }
-    public void TakePerson(Person newPerson)
+   /* public void TakePerson(Person newPerson)
     {
 
         pool.Push(newPerson);
@@ -28,7 +28,7 @@ public class PersonPool : MonoBehaviour
     public Person GivePerson()
     {
         return pool.Pop();
-    }
+    }*/
 
     public bool ListIsEmpty()
     {

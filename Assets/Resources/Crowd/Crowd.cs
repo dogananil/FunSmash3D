@@ -15,12 +15,14 @@ public class Crowd : MonoBehaviour
         {
             if (pool.ListIsEmpty())
             {
-                return;
+                continue;
             }
-            crowd.Add(pool.GivePerson());
+
+            crowd.Add(PersonPool.pool.Pop());
             crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
-            crowd[i].transform.SetParent(this.transform);
+            crowd[i].transform.SetParent(LevelManager.instance.currentCrowd.transform);
             crowd[i].transform.gameObject.SetActive(true);
+            crowd[i].dead = false;
         }
     }
    
