@@ -7,7 +7,7 @@ using UnityEngine.Experimental.PlayerLoop;
 public class Person : MonoBehaviour
 {
     [SerializeField] public Animator run, finish;
-    [SerializeField] private GameObject personPrefab;
+    public GameObject personPrefab;
     [SerializeField] private AnimationCurve dieCurve;
     public float speed;
     private static bool stopRun = false;
@@ -26,7 +26,7 @@ public class Person : MonoBehaviour
         {
             return;
         }
-        this.transform.position += Vector3.right * Time.deltaTime * speed;
+        this.personPrefab.transform.position += Vector3.right * Time.deltaTime * speed;
         //Debug.Log(speed);
         run.SetBool("run", TabController.INSTANCE.run);
 
@@ -40,12 +40,11 @@ public class Person : MonoBehaviour
             dead = true;
             this.GetComponent<Animator>().enabled = false;
            
-            this.transform.SetParent(LevelManager.instance.currentCrowd.pool.transform);
+            this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
             if(!dead2)
             {
-                PersonPool.pool.Push(this);
-
+                PersonPool.INSTANCE.pool.Push(this);
                 dead2 = true;
             }
             ScrollBar.INSTANCE.LoadProgessBar();
@@ -53,24 +52,25 @@ public class Person : MonoBehaviour
             StartCoroutine(DieSlowly(5.0f));
 
         }
-        else if (other.transform.CompareTag("DeathBase"))
+        else if (other.transform.CompareTag("FinishBase"))
         {
             if (!dead2)
             {
-                PersonPool.pool.Push(this);
+                PersonPool.INSTANCE.pool.Push(this);
                 dead2 = true;
             }
-            Die();
+            StartCoroutine(FinishGame(this.speed / 2f));
         }
-        else if(other.transform.CompareTag("FinishBase"))
+        /*else if (other.transform.CompareTag("DeathBase"))
         {
-            if (!dead2)
+            *//*if (!dead2)
             {
-                PersonPool.pool.Push(this);
+                PersonPool.INSTANCE.pool.Push(this);
                 dead2 = true;
-            }
-            StartCoroutine(FinishGame(this.speed/2f));
-        }
+            }*//*
+            //Die();
+        }*/
+
     }
 
     private IEnumerator DieSlowly(float seconds)
@@ -90,11 +90,11 @@ public class Person : MonoBehaviour
     public void Die()
     {
 
-        this.transform.gameObject.SetActive(false);
-        this.transform.SetParent(LevelManager.instance.personPool.transform);
+        this.personPrefab.transform.gameObject.SetActive(false);
+        this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
         Debug.Log(++deathCounter);
-        this.GetComponent<Animator>().enabled = true;
-        this.transform.position = Vector3.zero;
+        this.personPrefab.GetComponent<Animator>().enabled = true;
+        this.personPrefab.transform.position = Vector3.zero;
         stop = false;
         
     }

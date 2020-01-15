@@ -8,7 +8,6 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject chillBase;
     [SerializeField] private GameObject obstacle;
-    [SerializeField] public PersonPool personPool;
     private Vector3 start = Vector3.zero;
     [SerializeField] private CrowdPool crowdPool;
     public ObstaclePool obstaclePool;
@@ -30,7 +29,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        personPool.InitializePersonPool();
+        PersonPool.INSTANCE.InitializePersonPool();
         level =PlayerPrefs.GetInt("Level");
         LoadLevel(level);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Crowd : MonoBehaviour
 {
-    [SerializeField] public PersonPool pool;
+    //[SerializeField] public PersonPool pool;
     [SerializeField] public List<Person> crowd = new List<Person>();
     [SerializeField] private GameObject crowdPrefab;
     public void InitializeCrowd(int size,float speedMin,float speedMax)
@@ -13,15 +13,15 @@ public class Crowd : MonoBehaviour
         
         for (int i = 0; i < size; i++)
         {
-            if (pool.ListIsEmpty())
+            if (PersonPool.INSTANCE.ListIsEmpty())
             {
                 continue;
             }
 
-            crowd.Add(PersonPool.pool.Pop());
+            crowd.Add(PersonPool.INSTANCE.pool.Pop());
             crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
-            crowd[i].transform.SetParent(LevelManager.instance.currentCrowd.transform);
-            crowd[i].transform.gameObject.SetActive(true);
+            crowd[i].personPrefab.transform.SetParent(LevelManager.instance.currentCrowd.transform);
+            crowd[i].personPrefab.transform.gameObject.SetActive(true);
             crowd[i].dead = false;
         }
     }

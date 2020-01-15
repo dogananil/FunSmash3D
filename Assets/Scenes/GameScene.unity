@@ -708,7 +708,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &374000888 stripped
 Transform:
@@ -808,7 +808,7 @@ RectTransform:
   m_Children:
   - {fileID: 72300336}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1110,7 +1110,6 @@ MonoBehaviour:
     type: 3}
   obstacle: {fileID: 6225811317442989909, guid: dd16c28ad19fb5849bade00ef15e9557,
     type: 3}
-  personPool: {fileID: 1536986471}
   crowdPool: {fileID: 984545792}
   obstaclePool: {fileID: 1763688753}
   currentCrowd: {fileID: 1022836873}
@@ -1125,50 +1124,6 @@ MonoBehaviour:
     levelPieces: []
   canNextLevel: 0
   level: 0
---- !u!1 &929205356
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 929205358}
-  - component: {fileID: 929205357}
-  m_Layer: 12
-  m_Name: DieBitchez
-  m_TagString: DeathBase
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &929205357
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929205356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 500, y: 1, z: 500}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &929205358
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929205356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1443,7 @@ PrefabInstance:
     - target: {fileID: 4879011675453762907, guid: 76e741e84a79d9b4794a10ed0330d34f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4879011675453762907, guid: 76e741e84a79d9b4794a10ed0330d34f,
         type: 3}
@@ -1583,7 +1538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c6e580e54387a4ba2a344ae99bbc9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  person: {fileID: 5919833317272420950, guid: 461011e870991914dbda272d56975761, type: 3}
+  person: {fileID: 8130375085251606311, guid: 98d87005265d0d74dafa94143414e16d, type: 3}
   size: 70
 --- !u!4 &1536986472
 Transform:
@@ -6701,7 +6656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4464613669252742, guid: 0b960778462d34f7283156e4edafb7a2, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4464613669252742, guid: 0b960778462d34f7283156e4edafb7a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
