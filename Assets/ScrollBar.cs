@@ -32,7 +32,7 @@ public class ScrollBar : MonoBehaviour
         if(percantageLevelFinish.value<=slider.value && !confetiBool)
         {
             skullIcon.color = Color.green;
-            ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_SYSTEM, Color.black);
+            ParticlePool.instance.PlaySystem(LevelManager.instance.currentEnemy.transform.position, ParticlePool.SYSTEM.CONFETTI_SYSTEM, Color.black);
             //ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
             confetiBool = true;
             LevelManager.instance.canNextLevel = true;
@@ -52,5 +52,7 @@ public class ScrollBar : MonoBehaviour
         slider.value = 0;
         confetiBool = false;
         needToKill.color = Color.white;
+        skullIcon.color = Color.white;
+
     }
 }

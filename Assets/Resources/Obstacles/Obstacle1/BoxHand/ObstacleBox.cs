@@ -62,11 +62,9 @@ public class ObstacleBox : Obstacle
         Obstacle.deathCounter = 0;
 
         float timeStep = 0f;
-        // SkinnedMeshRenderer personColor = this.transform.GetComponent<SkinnedMeshRenderer>();
 
-        while (timeStep < 6)
+        while (timeStep < 5)
         {
-            // personColor.material.color = new Color(personColor.material.color.r, personColor.material.color.g, personColor.material.color.b, dieCurve.Evaluate(timeStep / 3f));
 
             LevelManager.instance.currentEnemy.deatCount.transform.position = startPosition + new Vector3(0, textCurve.Evaluate(timeStep), 2.0f);
             timeStep += Time.deltaTime;

@@ -25,7 +25,7 @@ public class TabController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            if (tabCount > LevelManager.instance.enemyPieces.Count) return;
+            
             if(tabCount==0)
             {
                 Person.RunAll();

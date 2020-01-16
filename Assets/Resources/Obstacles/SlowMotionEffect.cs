@@ -28,14 +28,14 @@ public class SlowMotionEffect : MonoBehaviour
     public IEnumerator SlowMotion()
     {
        //  prevTimeScale = Time.timeScale;
-        Time.timeScale = Time.timeScale / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
-        Time.fixedDeltaTime = Time.fixedDeltaTime / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
-        Time.maximumDeltaTime= Time.maximumDeltaTime/ LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
+        Time.timeScale = Time.timeScale / LevelManager.instance.currentEnemy.slowMotionSpeed;
+        Time.fixedDeltaTime = Time.fixedDeltaTime / LevelManager.instance.currentEnemy.slowMotionSpeed;
+        Time.maximumDeltaTime= Time.maximumDeltaTime/ LevelManager.instance.currentEnemy.slowMotionSpeed;
 
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 1;
-        Time.fixedDeltaTime = Time.fixedDeltaTime * LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
-        Time.maximumDeltaTime = Time.maximumDeltaTime / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
+        Time.fixedDeltaTime = Time.fixedDeltaTime * LevelManager.instance.currentEnemy.slowMotionSpeed;
+        Time.maximumDeltaTime = Time.maximumDeltaTime / LevelManager.instance.currentEnemy.slowMotionSpeed;
         SlowMotionEffect.slowMotion = false;
 
     }
