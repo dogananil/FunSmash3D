@@ -120,7 +120,9 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(second);
         DestroyAll();
-        LoadLevel(++level);
+        level++;
+        level = level % 16;
+        LoadLevel(level);
         PlayerPrefs.SetInt("level", level);
         TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) +  (int)Time.time);
 
