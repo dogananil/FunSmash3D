@@ -18,7 +18,8 @@ public class LevelManager : MonoBehaviour
     public List<Person> finishGuys = new List<Person>();
     public LevelProperties levelProperties;
     public bool canNextLevel;
-    private bool goToNextLevel; 
+    private bool goToNextLevel;
+    private int deathCountSameLevel;
 
     private void Awake()
     {
@@ -121,7 +122,7 @@ public class LevelManager : MonoBehaviour
         DestroyAll();
         LoadLevel(++level);
         PlayerPrefs.SetInt("level", level);
-        TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) + "___Try " + (int)Time.time);
+        TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) +  (int)Time.time);
 
 
     }
@@ -131,6 +132,8 @@ public class LevelManager : MonoBehaviour
         DestroyAll();
         LoadLevel(level);
         PlayerPrefs.SetInt("level", level);
+        TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) +"Try_Level-"+(++deathCountSameLevel)+ (int)Time.time);
+
 
     }
     private void DestroyAll()

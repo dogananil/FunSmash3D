@@ -1,9 +1,9 @@
 {
   "crowdColor":"#F2505D",
-  "crowdSize": 45,
-  "crowdMinSpeed":6.0,
-  "crowdMaxSpeed":8.0,
-  "percantageLevelFinish":0.75,
+  "crowdSize": 25,
+  "crowdMinSpeed":3.0,
+  "crowdMaxSpeed":4.0,
+  "percantageLevelFinish":0.2,
   "levelPieces": [
   {
       "obstacleType": 0,

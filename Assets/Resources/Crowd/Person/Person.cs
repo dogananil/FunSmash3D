@@ -39,14 +39,14 @@ public class Person : MonoBehaviour
         {
             dead = true;
             this.GetComponent<Animator>().enabled = false;
-           
+            this.GetComponent<BoxCollider>().enabled = false;
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
-            if(!dead2)
+            /*if(!dead2)
             {
                 PersonPool.INSTANCE.pool.Push(this);
                 dead2 = true;
-            }
+            }*/
             ScrollBar.INSTANCE.LoadProgessBar();
             StopPerson();
             StartCoroutine(DieSlowly(5.0f));
@@ -54,11 +54,11 @@ public class Person : MonoBehaviour
         }
         else if (other.transform.CompareTag("FinishBase"))
         {
-            if (!dead2)
+            /*if (!dead2)
             {
                 PersonPool.INSTANCE.pool.Push(this);
                 dead2 = true;
-            }
+            }*/
             StartCoroutine(FinishGame(this.speed / 2f));
         }
         /*else if (other.transform.CompareTag("DeathBase"))
@@ -89,7 +89,10 @@ public class Person : MonoBehaviour
     }
     public void Die()
     {
+        
+        PersonPool.INSTANCE.pool.Push(this);
 
+       
         this.personPrefab.gameObject.SetActiveRecursively(false);
         //this.personPrefab.gameObject.SetActive(false);
         this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
