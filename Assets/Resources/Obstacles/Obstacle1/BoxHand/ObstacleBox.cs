@@ -37,8 +37,46 @@ public class ObstacleBox : Obstacle
             timeStep += Time.deltaTime * obstacleSpeed;
             yield return new WaitForEndOfFrame();
         }
-
+        StartCoroutine(TextAnimation());
         TabController.INSTANCE.run = true;
     }
-    
+    private IEnumerator TextAnimation()
+    {
+        Vector3 startPosition = LevelManager.instance.currentEnemy.transform.position;
+        LevelManager.instance.currentEnemy.deatCount.transform.gameObject.SetActive(true);
+        LevelManager.instance.currentEnemy.deatCount.transform.forward = Camera.main.transform.forward;
+        if (Obstacle.deathCounter <= 5)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "x" + Obstacle.deathCounter.ToString();
+        }
+        else if (Obstacle.deathCounter > 5 && Obstacle.deathCounter <= 15)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "NICE" + "\n" + "x" + Obstacle.deathCounter.ToString();
+
+        }
+        else if (Obstacle.deathCounter > 15 && Obstacle.deathCounter <= 40)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "AWESOME" + "\n" + "x" + Obstacle.deathCounter.ToString();
+
+        }
+        Obstacle.deathCounter = 0;
+
+        float timeStep = 0f;
+        // SkinnedMeshRenderer personColor = this.transform.GetComponent<SkinnedMeshRenderer>();
+
+        while (timeStep < 6)
+        {
+            // personColor.material.color = new Color(personColor.material.color.r, personColor.material.color.g, personColor.material.color.b, dieCurve.Evaluate(timeStep / 3f));
+
+            LevelManager.instance.currentEnemy.deatCount.transform.position = startPosition + new Vector3(0, textCurve.Evaluate(timeStep), 2.0f);
+            timeStep += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        LevelManager.instance.currentEnemy.deatCount.transform.gameObject.SetActive(false);
+        
+
+
+
+    }
+
 }

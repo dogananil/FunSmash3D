@@ -55,6 +55,48 @@ MonoBehaviour:
   slowMotionSpeed: 0
   deatCount: {fileID: 8177552493149325508}
   deathCounter: 0
+  textCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 10
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3
+      value: -2
+      inSlope: -0.39105877
+      outSlope: Infinity
+      tangentMode: 97
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 5
+      value: -2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   cannonBall: {fileID: 7583179650179231583}
   speedCurve2:
     serializedVersion: 2
@@ -130,6 +172,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ba9efe526bbae4f9603cf9f41b551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1261431014759483468
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9044429275587635202}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1431827405101447326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,6 +199,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951839555277475996, guid: 7ce4edc82b96adf4f97911439ef2905d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Base
       objectReference: {fileID: 0}
     - target: {fileID: 5615038592591815418, guid: 7ce4edc82b96adf4f97911439ef2905d,
         type: 3}
@@ -199,6 +262,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ce4edc82b96adf4f97911439ef2905d, type: 3}
+--- !u!1 &9044429275587635202 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7951839555277475996, guid: 7ce4edc82b96adf4f97911439ef2905d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1431827405101447326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6787558687074867812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5615038592591815418, guid: 7ce4edc82b96adf4f97911439ef2905d,
@@ -303,11 +372,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6953004462098168030}
     m_Modifications:
-    - target: {fileID: 1007066990528277071, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_Name
-      value: Combo Text
-      objectReference: {fileID: 0}
     - target: {fileID: 1007066990528277070, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -363,11 +427,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983373, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -392,6 +451,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066990528277071, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_Name
+      value: Combo Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983373, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6800b6271b9f08345bdc6f3a59f4cfbf, type: 3}

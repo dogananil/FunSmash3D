@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public Crowd currentCrowd;
     [NonSerialized]public List<Obstacle> levelPiece=new List<Obstacle>();
     public List<Obstacle> enemyPieces = new List<Obstacle>();
+    public Obstacle currentEnemy;
     public List<Person> finishGuys = new List<Person>();
     public LevelProperties levelProperties;
     public bool canNextLevel;

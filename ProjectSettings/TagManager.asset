@@ -8,6 +8,8 @@ TagManager:
   - Person
   - DeathBase
   - FinishBase
+  - Base
+  - Ragdoll
   layers:
   - Default
   - TransparentFX

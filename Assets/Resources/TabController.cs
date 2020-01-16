@@ -32,10 +32,12 @@ public class TabController : MonoBehaviour
                 run = true;
 
             }
-            else
+            else if(tabCount!=0 && !LevelManager.instance.currentEnemy.smash)
             {
-                LevelManager.instance.enemyPieces[tabCount-1].GetComponent<Obstacle>().Smash();
-               
+                LevelManager.instance.currentEnemy.Smash();
+                LevelManager.instance.currentEnemy.smash = true;
+
+
             }
 
             tabCount++;

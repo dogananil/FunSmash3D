@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class SlowMotionEffect : MonoBehaviour
 {
-     private bool slowMotion;
+     public static bool slowMotion;
     private Coroutine slowRoutine=null;
    // private float prevTimeScale;
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.transform.CompareTag("Ragdoll"))
+        {
 
-
-            if (!slowMotion)
+            if (!SlowMotionEffect.slowMotion)
             {
                 if (slowRoutine != null)
                 {
                     StopCoroutine(slowRoutine);
                 }
-                slowMotion = true;
-                // StartCoroutine(Delay(0.2f));
+                SlowMotionEffect.slowMotion = true;
+            // StartCoroutine(Delay(0.2f));
+            
                 slowRoutine = StartCoroutine(SlowMotion());
-
             }
-        
+        }
     }
     public IEnumerator SlowMotion()
     {
@@ -35,6 +36,7 @@ public class SlowMotionEffect : MonoBehaviour
         Time.timeScale = 1;
         Time.fixedDeltaTime = Time.fixedDeltaTime * LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
         Time.maximumDeltaTime = Time.maximumDeltaTime / LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount - 2].slowMotionSpeed;
+        SlowMotionEffect.slowMotion = false;
 
     }
     private IEnumerator Delay(float second)
