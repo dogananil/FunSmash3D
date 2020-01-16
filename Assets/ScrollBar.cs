@@ -30,7 +30,7 @@ public class ScrollBar : MonoBehaviour
         if(percantageLevelFinish.value<=slider.value && !confetiBool)
         {
             ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_SYSTEM, Color.black);
-            ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
+            //ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
             confetiBool = true;
             LevelManager.instance.canNextLevel = true;
         }

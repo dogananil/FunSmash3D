@@ -6,6 +6,7 @@ public class ParticleManager : MonoBehaviour
 {
     [System.NonSerialized] public static ParticleManager instance;
     [SerializeField] public ParticleSystem hitSystem;
+    [SerializeField] public ParticleSystem deathTrailSystem;
 
     void Awake()
     {
@@ -24,9 +25,14 @@ public class ParticleManager : MonoBehaviour
             case SYSTEM.HIT_SYSTEM:
                 ps = hitSystem;
                 break;
+            case SYSTEM.DEATH_TRAIL:
+                ps = deathTrailSystem;
+                break;
         }
-
-        ps.startColor = color;
+        if (color != Color.black)
+        {
+            ps.startColor = color;
+        }
         ps.transform.position = position;
         _ = emitCount == 0 ? Play(ps) : Emit(ps, emitCount);
     }
@@ -46,10 +52,11 @@ public class ParticleManager : MonoBehaviour
     public void Reset()
     {
         hitSystem.Clear();
+        deathTrailSystem.Clear();
     }
 
     public enum SYSTEM
     {
-        HIT_SYSTEM
+        HIT_SYSTEM, DEATH_TRAIL
     }
 }
