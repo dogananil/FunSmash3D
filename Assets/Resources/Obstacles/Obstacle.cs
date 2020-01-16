@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 public abstract class Obstacle : MonoBehaviour
 {
     //[NonSerialized] public bool activate = false;
@@ -9,7 +10,10 @@ public abstract class Obstacle : MonoBehaviour
     [SerializeField] public float obstacleSpeed;
     [SerializeField] public ObstacleData obstacleData;
     [SerializeField] public float slowMotionSpeed;
-   
+    [SerializeField] public TextMeshPro deatCount;
+    [SerializeField]public  int deathCounter = 0;
+
+
 
     public void Activate()
     {

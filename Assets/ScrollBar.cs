@@ -12,6 +12,8 @@ public class ScrollBar : MonoBehaviour
     public TextMeshProUGUI levelText;
     public Slider percantageLevelFinish;
     private bool confetiBool;
+    [SerializeField] private Image skullIcon;
+    [SerializeField] private Text needToKill;
     private void Awake()
     {
         INSTANCE = this;
@@ -29,10 +31,12 @@ public class ScrollBar : MonoBehaviour
         deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + " / " + (float)LevelManager.instance.levelProperties.crowdSize;
         if(percantageLevelFinish.value<=slider.value && !confetiBool)
         {
+            skullIcon.color = Color.green;
             ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_SYSTEM, Color.black);
-            //ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
+            ParticlePool.instance.PlaySystem(LevelManager.instance.enemyPieces[TabController.INSTANCE.tabCount-2].transform.position, ParticlePool.SYSTEM.CONFETTI_TRAIL_SYSTEM, Color.black);
             confetiBool = true;
             LevelManager.instance.canNextLevel = true;
+            needToKill.color = Color.green;
         }
     }
     public void StartProgressBar()
@@ -40,10 +44,13 @@ public class ScrollBar : MonoBehaviour
         deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + " / " + LevelManager.instance.levelProperties.crowdSize;
         levelText.text = (LevelManager.instance.level+1).ToString();
         percantageLevelFinish.value = LevelManager.instance.levelProperties.percantageLevelFinish;
+        needToKill.text = "x" + (int)(LevelManager.instance.levelProperties.crowdSize * LevelManager.instance.levelProperties.percantageLevelFinish);
+        
     }
     public void ResetProgressBar()
     {
         slider.value = 0;
         confetiBool = false;
+        needToKill.color = Color.white;
     }
 }

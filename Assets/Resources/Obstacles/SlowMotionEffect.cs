@@ -9,18 +9,20 @@ public class SlowMotionEffect : MonoBehaviour
    // private float prevTimeScale;
     private void OnCollisionEnter(Collision collision)
     {
-        
-        if (!slowMotion)
-        {
-            if(slowRoutine!=null)
+
+
+            if (!slowMotion)
             {
-                StopCoroutine(slowRoutine);
-            }
+                if (slowRoutine != null)
+                {
+                    StopCoroutine(slowRoutine);
+                }
                 slowMotion = true;
                 // StartCoroutine(Delay(0.2f));
-               slowRoutine= StartCoroutine(SlowMotion());
-            
-        }
+                slowRoutine = StartCoroutine(SlowMotion());
+
+            }
+        
     }
     public IEnumerator SlowMotion()
     {
