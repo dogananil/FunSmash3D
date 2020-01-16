@@ -12,7 +12,14 @@ public class ObstacleFinishBase : Obstacle
         this.obstacleType = TYPE.TYPE6;
     }
 
+    public override void MakeTransparent()
+    {
 
+    }
+    public override void MakeOpaque()
+    {
+
+    }
     public override void Smash()
     {
         

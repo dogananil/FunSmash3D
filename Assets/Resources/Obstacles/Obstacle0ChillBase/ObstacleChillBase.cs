@@ -14,8 +14,15 @@ public class ObstacleChillBase : Obstacle
         this.obstacleType = TYPE.TYPE0;
        
     }
+    public override void MakeTransparent()
+    {
 
-  
+    }
+    public override void MakeOpaque()
+    {
+
+    }
+
 
     public override void Smash()
     {

@@ -19,8 +19,33 @@ public class ObstacleThorn : Obstacle
         this.obstacleType = TYPE.TYPE4;
         bodyRight = thornRight.GetComponent<Rigidbody>();
         bodyLeft = thornLeft.GetComponent<Rigidbody>();
-    }
+        MakeTransparent();
 
+    }
+    public override void MakeTransparent()
+    {
+        ChangeRenderMode(bodyRight.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+
+
+        ChangeRenderMode(bodyLeft.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+
+
+
+        bodyRight.GetComponent<MeshRenderer>().material.color = new Color(bodyRight.GetComponent<MeshRenderer>().material.color.r, bodyRight.GetComponent<MeshRenderer>().material.color.g, bodyRight.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        bodyLeft.GetComponent<MeshRenderer>().material.color = new Color(bodyLeft.GetComponent<MeshRenderer>().material.color.r, bodyLeft.GetComponent<MeshRenderer>().material.color.g, bodyLeft.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+    }
+    public override void MakeOpaque()
+    {
+        ChangeRenderMode(bodyRight.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+
+
+        ChangeRenderMode(bodyLeft.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+
+
+
+        bodyRight.GetComponent<MeshRenderer>().material.color = new Color(bodyRight.GetComponent<MeshRenderer>().material.color.r, bodyRight.GetComponent<MeshRenderer>().material.color.g, bodyRight.GetComponent<MeshRenderer>().material.color.b, 1f);
+        bodyLeft.GetComponent<MeshRenderer>().material.color = new Color(bodyLeft.GetComponent<MeshRenderer>().material.color.r, bodyLeft.GetComponent<MeshRenderer>().material.color.g, bodyLeft.GetComponent<MeshRenderer>().material.color.b, 1f);
+    }
     private void Start()
     {
         startRight = bodyRight.transform.localPosition + transform.position;

@@ -287,7 +287,7 @@ MonoBehaviour:
     slowMotionSpeed: 0
   slowMotionSpeed: 0
   deatCount: {fileID: 6672224373302714892}
-  deathCounter: 0
+  smash: 0
   textCurve:
     serializedVersion: 2
     m_Curve:

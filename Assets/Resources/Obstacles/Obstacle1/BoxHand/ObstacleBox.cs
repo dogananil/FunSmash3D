@@ -16,18 +16,32 @@ public class ObstacleBox : Obstacle
     {
         this.obstacleType = TYPE.TYPE1;
         body = boxHand.GetComponent<Rigidbody>();
+        MakeTransparent();
     }
 
     private void Start()
     {
         start = body.transform.localPosition + transform.position;
+
     }
 
     public override void Smash()
     {
         StartCoroutine(PlayAnimation());
     }
+    public override void MakeTransparent()
+    {
+        ChangeRenderMode(boxHand.GetComponent<MeshRenderer>().material, BlendMode.Fade);
 
+        boxHand.GetComponent<MeshRenderer>().material.color = new Color(boxHand.GetComponent<MeshRenderer>().material.color.r, boxHand.GetComponent<MeshRenderer>().material.color.g, boxHand.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        
+    }
+    public override void MakeOpaque()
+    {
+        ChangeRenderMode(boxHand.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+        boxHand.GetComponent<MeshRenderer>().material.color = new Color(boxHand.GetComponent<MeshRenderer>().material.color.r, boxHand.GetComponent<MeshRenderer>().material.color.g, boxHand.GetComponent<MeshRenderer>().material.color.b, 1f);
+
+    }
     public override IEnumerator PlayAnimation()
     {
         float timeStep=0f;
@@ -71,10 +85,6 @@ public class ObstacleBox : Obstacle
             yield return new WaitForEndOfFrame();
         }
         LevelManager.instance.currentEnemy.deatCount.transform.gameObject.SetActive(false);
-        
-
-
-
     }
 
 }

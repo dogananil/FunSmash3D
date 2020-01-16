@@ -15,6 +15,23 @@ public class ObstacleCannonBall : Obstacle
     {
         this.obstacleType = TYPE.TYPE3;
         body = cannonBall.GetComponent<Rigidbody>();
+        MakeTransparent();
+    }
+    public override void MakeTransparent()
+    {
+        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+
+
+        cannonBall.GetComponent<MeshRenderer>().material.color = new Color(cannonBall.GetComponent<MeshRenderer>().material.color.r, cannonBall.GetComponent<MeshRenderer>().material.color.g, cannonBall.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+
+    }
+    public override void MakeOpaque()
+    {
+        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+
+
+        cannonBall.GetComponent<MeshRenderer>().material.color = new Color(cannonBall.GetComponent<MeshRenderer>().material.color.r, cannonBall.GetComponent<MeshRenderer>().material.color.g, cannonBall.GetComponent<MeshRenderer>().material.color.b, 1f);
+
     }
     public override void Smash()
     {

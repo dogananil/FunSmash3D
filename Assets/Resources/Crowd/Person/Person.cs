@@ -71,7 +71,13 @@ public class Person : MonoBehaviour
 
             if (LevelManager.instance.currentEnemy != other.transform.parent.transform.GetComponent<Obstacle>())
             {
+                if(LevelManager.instance.currentEnemy!=null)
+                {
+                    LevelManager.instance.currentEnemy.MakeTransparent();
+
+                }
                 LevelManager.instance.currentEnemy = other.transform.parent.transform.GetComponent<Obstacle>();
+                LevelManager.instance.currentEnemy.MakeOpaque();
             }
 
         }

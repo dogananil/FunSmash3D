@@ -15,8 +15,23 @@ public class ObstacleHammer : Obstacle
     {
         this.obstacleType = TYPE.TYPE2;
         body = hammer.GetComponent<Rigidbody>();
+        MakeTransparent();
     }
+    public override void MakeTransparent()
+    {
+        ChangeRenderMode(hammer.GetComponent<MeshRenderer>().material, BlendMode.Fade);
 
+
+        hammer.GetComponent<MeshRenderer>().material.color = new Color(hammer.GetComponent<MeshRenderer>().material.color.r, hammer.GetComponent<MeshRenderer>().material.color.g, hammer.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+    }
+    public override void MakeOpaque()
+    {
+        ChangeRenderMode(hammer.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+
+
+        hammer.GetComponent<MeshRenderer>().material.color = new Color(hammer.GetComponent<MeshRenderer>().material.color.r, hammer.GetComponent<MeshRenderer>().material.color.g, hammer.GetComponent<MeshRenderer>().material.color.b, 1f);
+
+    }
     public override void Smash()
     {
         StartCoroutine(PlayAnimation());
