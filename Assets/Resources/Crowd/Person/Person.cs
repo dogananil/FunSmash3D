@@ -43,6 +43,7 @@ public class Person : MonoBehaviour
             this.GetComponent<BoxCollider>().enabled = false;
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
+            ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.DEATH_TRAIL, transform.position, Color.black, 1);
             /*if(!dead2)
             {
                 PersonPool.INSTANCE.pool.Push(this);
