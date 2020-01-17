@@ -27,12 +27,12 @@ public class LevelManager : MonoBehaviour
         instance = this;
     }
 
-    public int level;
+    [NonSerialized]public int level;
     // Start is called before the first frame update
     void Start()
     {
         PersonPool.INSTANCE.InitializePersonPool();
-        level =PlayerPrefs.GetInt("Level");
+        level =PlayerPrefs.GetInt("level");
         LoadLevel(level);
     }
     private void Update()
