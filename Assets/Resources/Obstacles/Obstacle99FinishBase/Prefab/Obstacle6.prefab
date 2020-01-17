@@ -81,6 +81,14 @@ MonoBehaviour:
     obstacleSpeed: 0
     slowMotionSpeed: 0
   slowMotionSpeed: 0
+  deatCount: {fileID: 0}
+  smash: 0
+  textCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8184024571258040939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,7 +214,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 957981b72145a92488f8c07bdc36fd6a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 957981b72145a92488f8c07bdc36fd6a,
         type: 3}

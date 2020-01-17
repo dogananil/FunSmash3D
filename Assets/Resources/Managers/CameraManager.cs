@@ -58,25 +58,25 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    public Vector3 MidPointOfChildren(Transform transform)
-    {
-        Vector3 mid = Vector3.zero;
-        foreach (Transform child in transform)
-        {
-            if (!child.GetComponent<Person>().dead)
-            {
-                mid += child.position;
-            }
-        }
-        mid /= transform.childCount;
-        return mid;
-    }
+    //public Vector3 MidPointOfChildren(Transform transform)
+    //{
+    //    Vector3 mid = Vector3.zero;
+    //    foreach (Transform child in transform)
+    //    {
+    //        if (!child.GetComponent<Person>().dead)
+    //        {
+    //            mid += child.position;
+    //        }
+    //    }
+    //    mid /= transform.childCount;
+    //    return mid;
+    //}
     public Vector3 FrontChildren(Transform transform)
     {
         Vector3 front = Vector3.zero;
         foreach (Transform child in transform)
         {
-            if (!child.GetComponent<Person>().dead && front.x< child.position.x)
+            if (!child.GetComponent<Person>().dead && front.x < child.position.x)
             {
                 front = child.position;
             }

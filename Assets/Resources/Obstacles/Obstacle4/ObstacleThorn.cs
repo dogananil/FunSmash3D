@@ -24,27 +24,39 @@ public class ObstacleThorn : Obstacle
     }
     public override void MakeTransparent()
     {
-        ChangeRenderMode(bodyRight.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
+        ChangeRenderMode(thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
 
-        ChangeRenderMode(bodyLeft.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
+        ChangeRenderMode(thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
 
 
-        bodyRight.GetComponent<MeshRenderer>().material.color = new Color(bodyRight.GetComponent<MeshRenderer>().material.color.r, bodyRight.GetComponent<MeshRenderer>().material.color.g, bodyRight.GetComponent<MeshRenderer>().material.color.b, 0.3f);
-        bodyLeft.GetComponent<MeshRenderer>().material.color = new Color(bodyLeft.GetComponent<MeshRenderer>().material.color.r, bodyLeft.GetComponent<MeshRenderer>().material.color.g, bodyLeft.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.r, thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.g, thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.r, thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.g, thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 0.3f);
+
+        thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.r, thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.g, thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.r, thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.g, thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 0.3f);
+
     }
     public override void MakeOpaque()
     {
-        ChangeRenderMode(bodyRight.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(thornRight.transform.GetChild(0).GetComponentInChildren<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(thornRight.transform.GetChild(1).GetComponentInChildren<MeshRenderer>().material, BlendMode.Opaque);
 
 
-        ChangeRenderMode(bodyLeft.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(thornLeft.transform.GetChild(0).GetComponentInChildren<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(thornLeft.transform.GetChild(1).GetComponentInChildren<MeshRenderer>().material, BlendMode.Opaque);
 
 
 
-        bodyRight.GetComponent<MeshRenderer>().material.color = new Color(bodyRight.GetComponent<MeshRenderer>().material.color.r, bodyRight.GetComponent<MeshRenderer>().material.color.g, bodyRight.GetComponent<MeshRenderer>().material.color.b, 1f);
-        bodyLeft.GetComponent<MeshRenderer>().material.color = new Color(bodyLeft.GetComponent<MeshRenderer>().material.color.r, bodyLeft.GetComponent<MeshRenderer>().material.color.g, bodyLeft.GetComponent<MeshRenderer>().material.color.b, 1f);
+        thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.r, thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.g, thornRight.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 1f);
+        thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.r, thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.g, thornRight.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 1f);
+
+        thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.r, thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.g, thornLeft.transform.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 1f);
+        thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.r, thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.g, thornLeft.transform.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 1f);
+
     }
     private void Start()
     {

@@ -19,7 +19,7 @@ public class ObstacleCannonBall : Obstacle
     }
     public override void MakeTransparent()
     {
-        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
 
         cannonBall.GetComponent<MeshRenderer>().material.color = new Color(cannonBall.GetComponent<MeshRenderer>().material.color.r, cannonBall.GetComponent<MeshRenderer>().material.color.g, cannonBall.GetComponent<MeshRenderer>().material.color.b, 0.3f);

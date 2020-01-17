@@ -6148,6 +6148,7 @@ MonoBehaviour:
   obstaclePool: {fileID: 1763688753}
   currentCrowd: {fileID: 1022836873}
   enemyPieces: []
+  currentEnemy: {fileID: 0}
   finishGuys: []
   levelProperties:
     crowdColor: 

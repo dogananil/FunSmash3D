@@ -19,7 +19,7 @@ public class ObstacleHammer : Obstacle
     }
     public override void MakeTransparent()
     {
-        ChangeRenderMode(hammer.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(hammer.GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
 
         hammer.GetComponent<MeshRenderer>().material.color = new Color(hammer.GetComponent<MeshRenderer>().material.color.r, hammer.GetComponent<MeshRenderer>().material.color.g, hammer.GetComponent<MeshRenderer>().material.color.b, 0.3f);

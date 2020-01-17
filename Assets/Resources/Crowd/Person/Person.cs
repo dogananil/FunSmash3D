@@ -68,7 +68,7 @@ public class Person : MonoBehaviour
         }
         else if (other.transform.CompareTag("Base"))
         {
-
+            other.enabled = false;
             if (LevelManager.instance.currentEnemy != other.transform.parent.transform.GetComponent<Obstacle>())
             {
                 if(LevelManager.instance.currentEnemy!=null)

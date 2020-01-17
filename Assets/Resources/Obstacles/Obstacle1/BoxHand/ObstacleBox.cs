@@ -31,7 +31,7 @@ public class ObstacleBox : Obstacle
     }
     public override void MakeTransparent()
     {
-        ChangeRenderMode(boxHand.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(boxHand.GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
         boxHand.GetComponent<MeshRenderer>().material.color = new Color(boxHand.GetComponent<MeshRenderer>().material.color.r, boxHand.GetComponent<MeshRenderer>().material.color.g, boxHand.GetComponent<MeshRenderer>().material.color.b, 0.3f);
         
