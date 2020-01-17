@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7749474074208925457}
   - component: {fileID: 2027072806863842430}
   - component: {fileID: 8678292241353349271}
-  - component: {fileID: 6634340780729572255}
+  - component: {fileID: 4284799088696998014}
   m_Layer: 9
   m_Name: EnemyPlane
   m_TagString: Base
@@ -131,8 +131,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  colliderTriger: {fileID: 7749474074208925457}
-  colliderNonTriger: {fileID: 6634340780729572255}
+  triggerOne: {fileID: 7749474074208925457}
+  notTriggerOne: {fileID: 4284799088696998014}
 --- !u!54 &8678292241353349271
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6634340780729572255
+--- !u!65 &4284799088696998014
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

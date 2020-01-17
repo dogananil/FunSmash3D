@@ -5,9 +5,10 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     private Coroutine scaleRoutine;
-    bool renewed = false;
     [SerializeField] private AnimationCurve scaleCurve;
     private bool used;
+    [SerializeField] private BoxCollider triggerOne;
+    [SerializeField] private BoxCollider notTriggerOne;
 
     private void OnTriggerEnter(Collider other)
 {
@@ -19,10 +20,12 @@ public class ObstacleController : MonoBehaviour
         if (other.transform.CompareTag("Person"))
         {
 
-
+            triggerOne.enabled = false;
+            notTriggerOne.enabled = true;
             if (LevelManager.instance.currentEnemy != null)
             {
                 LevelManager.instance.currentEnemy.MakeTransparent();
+                LevelManager.instance.currentEnemy.smash = true;
 
             }
             if(!this.transform.CompareTag("ChillBase"))
@@ -38,9 +41,7 @@ public class ObstacleController : MonoBehaviour
             }
 
             if(Person.currentFront != other.transform)
-            {
-
-            
+            {   
             if (scaleRoutine != null)
             {
                 StopCoroutine(scaleRoutine);
