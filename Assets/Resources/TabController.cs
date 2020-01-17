@@ -35,8 +35,8 @@ public class TabController : MonoBehaviour
             else if(tabCount!=0 && !LevelManager.instance.currentEnemy.smash)
             {
                 LevelManager.instance.currentEnemy.Smash();
-                
 
+                LevelManager.instance.currentEnemy.smash = true;
 
             }
 
