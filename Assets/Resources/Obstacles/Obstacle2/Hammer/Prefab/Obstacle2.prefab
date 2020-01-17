@@ -97,7 +97,7 @@ MonoBehaviour:
     slowMotionSpeed: 0
   slowMotionSpeed: 0
   deatCount: {fileID: 3641991219512911443}
-  deathCounter: 0
+  smash: 0
   textCurve:
     serializedVersion: 2
     m_Curve:
@@ -302,6 +302,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7749474074208925457, guid: 7ce4edc82b96adf4f97911439ef2905d,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ce4edc82b96adf4f97911439ef2905d, type: 3}
 --- !u!1 &7680701718082245602 stripped
@@ -429,6 +434,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5752459935806858003}
     m_Modifications:
+    - target: {fileID: 1007066990528277071, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_Name
+      value: Combo Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1007066991731983369, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1007066990528277070, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -484,45 +524,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983375, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066990528277071, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_Name
-      value: Combo Text
-      objectReference: {fileID: 0}
     - target: {fileID: 1007066991731983373, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1007066991731983369, guid: 6800b6271b9f08345bdc6f3a59f4cfbf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6800b6271b9f08345bdc6f3a59f4cfbf, type: 3}

@@ -19,17 +19,22 @@ public class ObstacleCannon : Obstacle
     }
     public override void MakeTransparent()
     {
-        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Fade);
+        ChangeRenderMode(cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
+        ChangeRenderMode(cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material, BlendMode.Transparent);
 
 
-        cannonBall.GetComponent<MeshRenderer>().material.color = new Color(cannonBall.GetComponent<MeshRenderer>().material.color.r, cannonBall.GetComponent<MeshRenderer>().material.color.g, cannonBall.GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.r, cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.g, cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 0.3f);
+        cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.r, cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.g, cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 0.3f);
 
     }
     public override void MakeOpaque()
     {
-        ChangeRenderMode(cannonBall.GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material, BlendMode.Opaque);
+        ChangeRenderMode(cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material, BlendMode.Opaque);
 
-        cannonBall.GetComponent<MeshRenderer>().material.color = new Color(cannonBall.GetComponent<MeshRenderer>().material.color.r, cannonBall.GetComponent<MeshRenderer>().material.color.g, cannonBall.GetComponent<MeshRenderer>().material.color.b, 1f);
+
+        cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color = new Color(cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.r, cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.g, cannonBall.transform.parent.GetChild(0).GetComponent<MeshRenderer>().material.color.b, 1f);
+        cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color = new Color(cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.r, cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.g, cannonBall.transform.parent.GetChild(1).GetComponent<MeshRenderer>().material.color.b, 1f);
 
     }
     private void Start()

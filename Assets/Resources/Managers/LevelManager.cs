@@ -125,6 +125,7 @@ public class LevelManager : MonoBehaviour
         level = level % 16;
         LoadLevel(level);
         PlayerPrefs.SetInt("level", level);
+        PlayerPrefs.Save();
         TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + level.ToString() +  (int)Time.time);
 
 
@@ -135,6 +136,7 @@ public class LevelManager : MonoBehaviour
         DestroyAll();
         LoadLevel(level);
         PlayerPrefs.SetInt("level", level);
+        PlayerPrefs.Save();
         TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) +"Try_Level-"+(++deathCountSameLevel).ToString()+ (int)Time.time);
 
 

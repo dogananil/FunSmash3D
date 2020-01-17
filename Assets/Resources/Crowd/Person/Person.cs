@@ -18,6 +18,7 @@ public class Person : MonoBehaviour
     [System.NonSerialized] public bool dead2 = false;
     private bool stop = false;
     private Collider otherTemp;
+    public static Transform currentFront;
 
 
 
@@ -66,21 +67,7 @@ public class Person : MonoBehaviour
             }*/
             StartCoroutine(FinishGame(this.speed / 2f));
         }
-        else if (other.transform.CompareTag("Base"))
-        {
-            other.enabled = false;
-            if (LevelManager.instance.currentEnemy != other.transform.parent.transform.GetComponent<Obstacle>())
-            {
-                if(LevelManager.instance.currentEnemy!=null)
-                {
-                    LevelManager.instance.currentEnemy.MakeTransparent();
-
-                }
-                LevelManager.instance.currentEnemy = other.transform.parent.transform.GetComponent<Obstacle>();
-                LevelManager.instance.currentEnemy.MakeOpaque();
-            }
-
-        }
+        
         /*else if (other.transform.CompareTag("DeathBase"))
         {
             *//*if (!dead2)

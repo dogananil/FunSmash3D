@@ -22,17 +22,22 @@ public class CameraManager : MonoBehaviour
     [SerializeField] public AnimationCurve shakeCurve;
     [SerializeField] public AnimationCurve panCurve;
     [System.NonSerialized] public Vector3 panOffset = Vector3.zero;
-
+    private Transform currentFrontPerson;
+   
+    
     void Awake()
     {
         startPosition = transform.position;
         targetPosition = startPosition;
         realtimeFollowSpeed = followSpeed;
+        
+        
     }
 
     private void Start()
     {
         //PanOffset(-15.0f, -60.0f, 1.0f, new Vector3(17.0f, 0.0f, -12.0f));
+        currentFrontPerson = LevelManager.instance.currentCrowd.transform.GetChild(0).transform;
     }
 
     void FixedUpdate()
@@ -45,7 +50,7 @@ public class CameraManager : MonoBehaviour
             if (canFollow)
             {
                 //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
-                Vector3 midPoint = FrontChildren(LevelManager.instance.currentCrowd.transform);
+                Vector3 midPoint = FrontChildren(LevelManager.instance.currentCrowd.transform,-0.5f);
                 //Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
                 Debug.DrawLine(Vector3.zero, midPoint);
                 targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset + panOffset, Time.deltaTime * realtimeFollowSpeed);
@@ -71,18 +76,20 @@ public class CameraManager : MonoBehaviour
     //    mid /= transform.childCount;
     //    return mid;
     //}
-    public Vector3 FrontChildren(Transform transform)
+    public Vector3 FrontChildren(Transform transform, float offset)
     {
-        Vector3 front = Vector3.zero;
+        
         foreach (Transform child in transform)
         {
-            if (!child.GetComponent<Person>().dead && front.x < child.position.x)
+            if (!child.GetComponent<Person>().dead && currentFrontPerson.position.x < (child.position.x+offset) )
             {
-                front = child.position;
+                currentFrontPerson = child; 
             }
         }
+        
+        
 
-        return front;
+        return currentFrontPerson.position;
 
     }
     public void Reset()
@@ -135,4 +142,6 @@ public class CameraManager : MonoBehaviour
         transform.eulerAngles = (startAngles + Vector3.up * panCurve.Evaluate(1.0f) * angleMagnitude);
 
     }
+
+    
 }

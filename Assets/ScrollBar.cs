@@ -28,7 +28,7 @@ public class ScrollBar : MonoBehaviour
     public void LoadProgessBar()
     {
         slider.value = (float)((float)LevelManager.instance.levelProperties.crowdSize-LevelManager.instance.currentCrowd.transform.childCount) /(float)LevelManager.instance.levelProperties.crowdSize;
-        deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + " / " + (float)LevelManager.instance.levelProperties.crowdSize;
+        deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + "/" + (float)LevelManager.instance.levelProperties.crowdSize;
         if(percantageLevelFinish.value<=slider.value && !confetiBool)
         {
             skullIcon.color = Color.green;
@@ -41,7 +41,7 @@ public class ScrollBar : MonoBehaviour
     }
     public void StartProgressBar()
     {
-        deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + " / " + LevelManager.instance.levelProperties.crowdSize;
+        deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + "/" + LevelManager.instance.levelProperties.crowdSize;
         levelText.text = (LevelManager.instance.level+1).ToString();
         percantageLevelFinish.value = LevelManager.instance.levelProperties.percantageLevelFinish;
         needToKill.text = "x" + (int)(LevelManager.instance.levelProperties.crowdSize * LevelManager.instance.levelProperties.percantageLevelFinish);

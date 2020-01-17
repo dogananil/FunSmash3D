@@ -51,7 +51,7 @@ public abstract class Obstacle : MonoBehaviour
                 standardShaderMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
                 standardShaderMaterial.SetInt("_ZWrite", 1);
                 standardShaderMaterial.DisableKeyword("_ALPHATEST_ON");
-                standardShaderMaterial.DisableKeyword("_ALPHABLEND_ON");
+                standardShaderMaterial.DisableKeyword("_ALPHABLEND_OFF");
                 standardShaderMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
                 standardShaderMaterial.renderQueue = -1;
                 break;
