@@ -69,11 +69,11 @@ public class LevelManager : MonoBehaviour
     }
     public void GetCrowd(int size)
     {
-       
+        currentCrowd.transform.gameObject.SetActive(true);
         currentCrowd.InitializeCrowd(size,levelProperties.crowdMinSpeed,levelProperties.crowdMaxSpeed);
         //currentCrowd = crowdPool.GiveCrowd();
         currentCrowd.transform.SetParent(this.transform);
-        currentCrowd.transform.gameObject.SetActive(true);
+       
         currentCrowd.transform.position = Vector3.zero;
 
         ScrollBar.INSTANCE.StartProgressBar();
@@ -175,6 +175,7 @@ public class LevelManager : MonoBehaviour
         canNextLevel = false;
         TabController.INSTANCE.tabCount = 0;
         Person.StopAll();
+        Person.currentFront = null;
         ScrollBar.INSTANCE.ResetProgressBar();
         goToNextLevel = false;
     }

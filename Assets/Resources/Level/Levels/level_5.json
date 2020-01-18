@@ -4,6 +4,7 @@
   "crowdMinSpeed":3.0,
   "crowdMaxSpeed":4.0,
   "percantageLevelFinish":0.4,
+  "percentageRedPerson":0.1,
   "levelPieces": [
   {
       "obstacleType": 0,

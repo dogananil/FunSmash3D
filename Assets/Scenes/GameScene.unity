@@ -6158,9 +6158,9 @@ MonoBehaviour:
     crowdMinSpeed: 0
     crowdMaxSpeed: 0
     percantageLevelFinish: 0
+    percentageRedPerson: 0
     levelPieces: []
   canNextLevel: 0
-  level: 0
 --- !u!1 &929205356
 GameObject:
   m_ObjectHideFlags: 0
@@ -6327,30 +6327,6 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  scaleCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 2
-      inSlope: 2
-      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -11959,6 +11935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
         type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
       propertyPath: pool
       value: 
       objectReference: {fileID: 1536986471}
@@ -11966,6 +11947,31 @@ PrefabInstance:
         type: 3}
       propertyPath: size
       value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[1].value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778097751940318431, guid: 0f79f9146b48e6f42a82db6e615a7f90,
+        type: 3}
+      propertyPath: scaleCurve.m_Curve.Array.data[1].outSlope
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f79f9146b48e6f42a82db6e615a7f90, type: 3}

@@ -11,6 +11,7 @@ public class LevelProperties
     public float crowdMinSpeed;
     public float crowdMaxSpeed;
     public float percantageLevelFinish;
+    public float percentageRedPerson;
     public Obstacle.ObstacleData[] levelPieces;
    
 }

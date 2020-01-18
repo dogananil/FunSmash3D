@@ -12,7 +12,7 @@ public class Person : MonoBehaviour
     public float speed;
     private static bool stopRun = false;
 
-    [SerializeField] private Color color;
+    [SerializeField] public Color color;
     [System.NonSerialized] private MeshRenderer meshRenderer;
     [System.NonSerialized] public bool dead = false;
     [System.NonSerialized] public bool dead2 = false;
@@ -45,6 +45,8 @@ public class Person : MonoBehaviour
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.DEATH_TRAIL, transform.position, Color.black, 1);
+            
+
             /*if(!dead2)
             {
                 PersonPool.INSTANCE.pool.Push(this);
@@ -55,7 +57,7 @@ public class Person : MonoBehaviour
             otherTemp = other;
             ScrollBar.INSTANCE.LoadProgessBar();
             StopPerson();
-            StartCoroutine(DieSlowly(5.0f));
+            StartCoroutine(DieSlowly(3.0f));
 
         }
         else if (other.transform.CompareTag("FinishBase"))
