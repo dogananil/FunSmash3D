@@ -53,7 +53,10 @@ public class LevelManager : MonoBehaviour
             levelPiece.Add(levelBase);
             if (levelProperties.levelPieces[i].obstacleType != Obstacle.TYPE.TYPE0)
             {
+
                 enemyPieces.Add(levelBase.GetComponent<Obstacle>());
+                //enemyPieces[enemyPieces.Count-1].obstacleParticle.Stop();
+                
             }
             levelBase.transform.localPosition = start;
             start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x, 0, 0);
@@ -78,6 +81,7 @@ public class LevelManager : MonoBehaviour
 
         ScrollBar.INSTANCE.StartProgressBar();
         SetLocationForCrowd();
+        enemyPieces[0].obstacleParticle.SetActive(true);
     }
 
     private void OnDrawGizmos()
@@ -106,7 +110,7 @@ public class LevelManager : MonoBehaviour
 
             n = Quaternion.Euler(0, angle + Random.Range(-4.0f, 4.0f), 0) * direction;
             currentCrowd.crowd[i].transform.position = n;
-
+            
             angle += angleAdder;
             if (angle >= 350.0f)
             {

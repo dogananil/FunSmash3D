@@ -67,6 +67,7 @@ public class ObstacleThorn : Obstacle
 
     public override void Smash()
     {
+        obstacleParticle.SetActive(false);
         StartCoroutine(PlayAnimation());
     }
 

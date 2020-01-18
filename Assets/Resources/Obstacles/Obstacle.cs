@@ -12,10 +12,12 @@ public abstract class Obstacle : MonoBehaviour
     [SerializeField] public float slowMotionSpeed;
     [SerializeField] public TextMeshPro deatCount;
     [SerializeField]public static int deathCounter = 0;
-     public bool smash;
+     public GameObject obstacleParticle;
+
+    public bool smash;
     public AnimationCurve textCurve;
 
-
+ 
 
     public void Activate()
     {

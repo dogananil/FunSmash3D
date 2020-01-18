@@ -44,6 +44,7 @@ public class ObstacleCannon : Obstacle
 
     public override void Smash()
     {
+        this.obstacleParticle.SetActive(false);
         StartCoroutine(PlayAnimation());
     }
 

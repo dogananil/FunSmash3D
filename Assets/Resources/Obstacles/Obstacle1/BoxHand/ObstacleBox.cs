@@ -27,6 +27,7 @@ public class ObstacleBox : Obstacle
 
     public override void Smash()
     {
+        this.obstacleParticle.SetActive(false);
         StartCoroutine(PlayAnimation());
     }
     public override void MakeTransparent()

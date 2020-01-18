@@ -32,6 +32,8 @@ public class ObstacleController : MonoBehaviour
             {
                 LevelManager.instance.currentEnemy = this.transform.parent.GetComponent<Obstacle>();
                 LevelManager.instance.currentEnemy.MakeOpaque();
+                LevelManager.instance.currentEnemy.obstacleParticle.SetActive(true);
+
             }
 
             /*if (Person.currentFront != null && Person.currentFront!=other.transform)// Another person trigger
@@ -39,11 +41,6 @@ public class ObstacleController : MonoBehaviour
                 Person.currentFront.localScale = Vector3.one * 0.6f;
                 Person.currentFront.GetComponent<SkinnedMeshRenderer>().material.color = other.transform.GetComponent<SkinnedMeshRenderer>().material.color;
             }*/
-
-
-            
-
-
             used = true;
         }
 }

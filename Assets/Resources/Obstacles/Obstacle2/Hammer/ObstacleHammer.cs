@@ -34,6 +34,7 @@ public class ObstacleHammer : Obstacle
     }
     public override void Smash()
     {
+        this.obstacleParticle.SetActive(false);
         StartCoroutine(PlayAnimation());
         
     }
