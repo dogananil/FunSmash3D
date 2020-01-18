@@ -30,6 +30,11 @@ public class ObstacleController : MonoBehaviour
             }
             if(!this.transform.CompareTag("ChillBase"))
             {
+                if(LevelManager.instance.currentEnemy!=null)
+                {
+                    LevelManager.instance.currentEnemy.obstacleParticle.SetActive(false);
+
+                }
                 LevelManager.instance.currentEnemy = this.transform.parent.GetComponent<Obstacle>();
                 LevelManager.instance.currentEnemy.MakeOpaque();
                 LevelManager.instance.currentEnemy.obstacleParticle.SetActive(true);
