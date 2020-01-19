@@ -22,14 +22,18 @@ public class Crowd : MonoBehaviour
             crowd.Add(PersonPool.INSTANCE.pool.Pop());
 
             crowd[i].personPrefab.gameObject.SetActiveRecursively(true);
-            //crowd[i].personPrefab.gameObject.SetActive(true);
+            crowd[i].personBoomEffect.Stop();
             crowd[i].transform.localScale = Vector3.one * 0.6f;
             crowd[i].transform.GetComponent<SkinnedMeshRenderer>().material.color = crowd[i].color;
+            crowd[i].personBoomEffect.GetComponent<Renderer>().material.color = crowd[i].color;
+            crowd[i].personBoomEffect.startSize = 1.0f;
             redPersonNumber = (int)(LevelManager.instance.levelProperties.percentageRedPerson * size);
             modRed = size / redPersonNumber;
             if ((i+1)%modRed==0)
             {
                 StartCoroutine(ScaleRoutine(crowd[i].transform));
+                crowd[i].personBoomEffect.GetComponent<Renderer>().material.color = Color.red;
+                crowd[i].personBoomEffect.startSize = 2.0f;
             }
             crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
             crowd[i].GetComponent<BoxCollider>().enabled = true;

@@ -18,6 +18,7 @@ public class Person : MonoBehaviour
     [System.NonSerialized] public bool dead2 = false;
     private bool stop = false;
     private Collider otherTemp;
+     public ParticleSystem personBoomEffect;
     public static Transform currentFront;
 
 
@@ -29,7 +30,6 @@ public class Person : MonoBehaviour
             return;
         }
         this.personPrefab.transform.position += Vector3.right * Time.deltaTime * speed;
-        //Debug.Log(speed);
         run.SetBool("run", TabController.INSTANCE.run);
 
 
@@ -46,12 +46,6 @@ public class Person : MonoBehaviour
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.HIT_SYSTEM, transform.position, color, 20);
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.DEATH_TRAIL, transform.position, Color.black, 1);
             
-
-            /*if(!dead2)
-            {
-                PersonPool.INSTANCE.pool.Push(this);
-                dead2 = true;
-            }*/
             Obstacle.deathCounter++;
 
             otherTemp = other;
@@ -62,12 +56,13 @@ public class Person : MonoBehaviour
         }
         else if (other.transform.CompareTag("FinishBase"))
         {
-            /*if (!dead2)
-            {
-                PersonPool.INSTANCE.pool.Push(this);
-                dead2 = true;
-            }*/
-            StartCoroutine(FinishGame(this.speed / 2f));
+            dead = true;
+            this.GetComponent<Animator>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
+
+            BombPerson();
+//            StartCoroutine(FinishGame(this.speed / 2f));
         }
         
         /*else if (other.transform.CompareTag("DeathBase"))
@@ -142,6 +137,22 @@ public class Person : MonoBehaviour
             else
             {
                 StartCoroutine(LevelManager.instance.NextLevel(2.0f));
+            }
+        }
+    }
+    private void BombPerson()
+    {
+        float power = 10.0f;
+        float radius = 5.0f;
+        float upforce = 1.0f;
+        this.personBoomEffect.Play(true);
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);
+        foreach(Collider hit in colliders)
+        {
+            Rigidbody rig = hit.GetComponent<Rigidbody>();
+            if(rig!=null)
+            {
+                rig.AddExplosionForce(power, this.transform.position, radius, upforce, ForceMode.Impulse);
             }
         }
     }
