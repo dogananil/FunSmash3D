@@ -60,20 +60,21 @@ public class Person : MonoBehaviour
             this.GetComponent<Animator>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
+            CameraManager.INSTANCE.canFollow = false;
 
+            Debug.Log("Coin");
             BombPerson();
-//            StartCoroutine(FinishGame(this.speed / 2f));
+            Die();
+
         }
-        
-        /*else if (other.transform.CompareTag("DeathBase"))
+        else if(other.transform.CompareTag("End"))
         {
-            *//*if (!dead2)
-            {
-                PersonPool.INSTANCE.pool.Push(this);
-                dead2 = true;
-            }*//*
-            //Die();
-        }*/
+            dead = true;
+            this.GetComponent<Animator>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
+            this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
+            Die();
+        }
 
     }
 
@@ -142,18 +143,29 @@ public class Person : MonoBehaviour
     }
     private void BombPerson()
     {
-        float power = 10.0f;
-        float radius = 5.0f;
+        float power = 5f;
+        float radius = 2.0f;
         float upforce = 1.0f;
         this.personBoomEffect.Play(true);
+        GameObject coinParent=null;
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);
         foreach(Collider hit in colliders)
         {
             Rigidbody rig = hit.GetComponent<Rigidbody>();
-            if(rig!=null)
+            if(rig!=null &&hit.CompareTag("FinishBase"))
             {
-                rig.AddExplosionForce(power, this.transform.position, radius, upforce, ForceMode.Impulse);
+                rig.AddExplosionForce(power*this.transform.localScale.magnitude, this.transform.position, radius, upforce, ForceMode.Impulse);
+                hit.enabled = false;
+                // rig.AddForceAtPosition((rig.transform.position-transform.position ).normalized * power*this.transform.localScale.magnitude, this.transform.position-Vector3.down*0.25f, ForceMode.Impulse);
+                coinParent = hit.transform.parent.transform.gameObject;
+                hit.transform.SetParent(coinParent.transform.parent);
+                Destroy(hit.transform.gameObject,1.0f);
             }
+        }
+        if(coinParent.transform.childCount==0)
+        {
+            Debug.Log("Game Over");
+            StartCoroutine(LevelManager.instance.LoadSameLevel(1.0f));
         }
     }
 }

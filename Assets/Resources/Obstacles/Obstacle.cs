@@ -87,6 +87,53 @@ public abstract class Obstacle : MonoBehaviour
         }
 
     }
+    public void ScoreToString()
+    {
+        if(Obstacle.deathCounter==0)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "So Close";
+        }
+        else if (Obstacle.deathCounter <= 5)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "x" + Obstacle.deathCounter.ToString() + " Combo";
+        }
+        else if (Obstacle.deathCounter > 5 && Obstacle.deathCounter <= 15)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "NICE" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+
+        }
+        else if (Obstacle.deathCounter > 15 && Obstacle.deathCounter <= 40)
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "PERFECT" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+
+        }
+        
+        else
+        {
+            LevelManager.instance.currentEnemy.deatCount.text = "AWESOME" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+
+        }
+    }
+    public IEnumerator TextAnimation()
+    {
+        Vector3 startPosition = LevelManager.instance.currentEnemy.transform.position;
+        this.deatCount.transform.gameObject.SetActive(true);
+        this.deatCount.transform.forward = Camera.main.transform.forward;
+        ScoreToString();
+
+        Obstacle.deathCounter = 0;
+
+        float timeStep = 0f;
+
+        while (timeStep < 5)
+        {
+
+            this.deatCount.transform.position = startPosition + new Vector3(0, textCurve.Evaluate(timeStep), 2.0f);
+            timeStep += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        this.deatCount.transform.gameObject.SetActive(false);
+    }
 }
 public enum BlendMode
 {

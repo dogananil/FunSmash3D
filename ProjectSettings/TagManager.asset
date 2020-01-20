@@ -11,6 +11,8 @@ TagManager:
   - Base
   - Ragdoll
   - ChillBase
+  - FxTemporaire
+  - End
   layers:
   - Default
   - TransparentFX

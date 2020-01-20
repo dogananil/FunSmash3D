@@ -33,14 +33,16 @@ public class LevelManager : MonoBehaviour
     {
         PersonPool.INSTANCE.InitializePersonPool();
         level =PlayerPrefs.GetInt("level");
-        LoadLevel(level);
+        LoadLevel(10);
     }
     private void Update()
     {
         if(currentCrowd.transform.childCount==0 && !goToNextLevel)
         {
+           
             goToNextLevel = true;
             StartCoroutine(LevelManager.instance.NextLevel(2.0f));
+            
         }
     }
     public void CreateLevel(int size,LevelProperties levelProperties)
@@ -128,6 +130,7 @@ public class LevelManager : MonoBehaviour
         level++;
         level = level % 16;
         LoadLevel(level);
+        CameraManager.INSTANCE.canFollow = true;
         PlayerPrefs.SetInt("level", level);
         PlayerPrefs.Save();
         TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + level.ToString() +"_Time-"+  (int)Time.time);

@@ -11,6 +11,7 @@ public class CameraManager : MonoBehaviour
     //}
 
     //[SerializeField] private Transform followObject;
+    public static CameraManager INSTANCE;
     [SerializeField] public Vector3 followOffset;
     [SerializeField] public float followSpeed;
     [System.NonSerialized] private float realtimeFollowSpeed;
@@ -30,7 +31,7 @@ public class CameraManager : MonoBehaviour
         startPosition = transform.position;
         targetPosition = startPosition;
         realtimeFollowSpeed = followSpeed;
-        
+        INSTANCE = this;
         
     }
 
@@ -52,12 +53,13 @@ public class CameraManager : MonoBehaviour
                 //targetPosition = Vector3.Lerp(targetPosition, followObject.position + followOffset, Time.deltaTime * realtimeFollowSpeed);
                 Vector3 midPoint = FrontChildren(LevelManager.instance.currentCrowd.transform,-0.5f);
                 //Vector3 midPoint = MidPointOfChildren(LevelManager.instance.currentCrowd.transform);
+                midPoint.z = 0;
                 Debug.DrawLine(Vector3.zero, midPoint);
                 targetPosition = Vector3.Lerp(targetPosition, midPoint + followOffset + panOffset, Time.deltaTime * realtimeFollowSpeed);
             }
             else
             {
-                targetPosition = Vector3.Lerp(targetPosition, Vector3.up * 2.0f, Time.deltaTime * realtimeFollowSpeed);
+                //targetPosition =Vector3.zero;
             }
             transform.position = targetPosition + shakeOffset;
         }
