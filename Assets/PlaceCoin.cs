@@ -18,6 +18,7 @@ public class PlaceCoin : MonoBehaviour
                 
                 GameObject coinClone = Instantiate(coin, this.transform);
                 coinClone.transform.localPosition = j /8 == 0 ?  start + new Vector3(j, 0, i): start + new Vector3(-(j % 8)-1, 0, i);
+                LevelManager.instance.coins.Add(coinClone);
             }
             
         }

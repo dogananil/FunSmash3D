@@ -22,16 +22,17 @@ public class ObstacleController : MonoBehaviour
 
             triggerOne.enabled = false;
             notTriggerOne.enabled = true;
-            if (LevelManager.instance.currentEnemy != null)
+           /* if (LevelManager.instance.currentEnemy != null)
             {
-                LevelManager.instance.currentEnemy.MakeTransparent();
-                LevelManager.instance.currentEnemy.smash = true;
+               
 
-            }
+            }*/
             if(!this.transform.CompareTag("ChillBase"))
             {
                 if(LevelManager.instance.currentEnemy!=null)
                 {
+                    LevelManager.instance.currentEnemy.MakeTransparent();
+                    LevelManager.instance.currentEnemy.smash = true;
                     LevelManager.instance.currentEnemy.obstacleParticle.SetActive(false);
 
                 }

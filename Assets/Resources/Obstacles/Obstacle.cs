@@ -91,26 +91,29 @@ public abstract class Obstacle : MonoBehaviour
     {
         if(Obstacle.deathCounter==0)
         {
-            LevelManager.instance.currentEnemy.deatCount.text = "So Close";
+           this.deatCount.text = "So Close";
         }
-        else if (Obstacle.deathCounter <= 5)
+        else if (Obstacle.deathCounter ==1)
         {
-            LevelManager.instance.currentEnemy.deatCount.text = "x" + Obstacle.deathCounter.ToString() + " Combo";
+            this.deatCount.text = "x" + Obstacle.deathCounter.ToString();
+        }
+        else if (Obstacle.deathCounter>1 &&Obstacle.deathCounter <= 5)
+        {
+            this.deatCount.text = "x" + Obstacle.deathCounter.ToString() + " Combo";
         }
         else if (Obstacle.deathCounter > 5 && Obstacle.deathCounter <= 15)
         {
-            LevelManager.instance.currentEnemy.deatCount.text = "NICE" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+            this.deatCount.text = "NICE" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
 
         }
         else if (Obstacle.deathCounter > 15 && Obstacle.deathCounter <= 40)
         {
-            LevelManager.instance.currentEnemy.deatCount.text = "PERFECT" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+            this.deatCount.text = "PERFECT" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
 
-        }
-        
+        }  
         else
         {
-            LevelManager.instance.currentEnemy.deatCount.text = "AWESOME" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
+            this.deatCount.text = "AWESOME" + "\n" + "x" + Obstacle.deathCounter.ToString() + " Combo";
 
         }
     }

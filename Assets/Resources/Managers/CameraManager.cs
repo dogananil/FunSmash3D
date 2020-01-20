@@ -59,7 +59,7 @@ public class CameraManager : MonoBehaviour
             }
             else
             {
-                //targetPosition =Vector3.zero;
+                targetPosition =Vector3.Lerp(targetPosition,LevelManager.instance.enemyPieces[LevelManager.instance.enemyPieces.Count-1].transform.position+followOffset - Vector3.left*5,Time.deltaTime*realtimeFollowSpeed);
             }
             transform.position = targetPosition + shakeOffset;
         }

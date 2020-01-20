@@ -19,8 +19,10 @@ public class LevelManager : MonoBehaviour
     public List<Person> finishGuys = new List<Person>();
     public LevelProperties levelProperties;
     public bool canNextLevel;
-    private bool goToNextLevel;
+    public bool goToNextLevel;
     private int deathCountSameLevel;
+    public List<GameObject> coins = new List<GameObject>();
+    public AnimationCurve coinCurve;
 
     private void Awake()
     {
@@ -33,16 +35,16 @@ public class LevelManager : MonoBehaviour
     {
         PersonPool.INSTANCE.InitializePersonPool();
         level =PlayerPrefs.GetInt("level");
-        LoadLevel(10);
+        LoadLevel(level);
     }
     private void Update()
     {
-        if(currentCrowd.transform.childCount==0 && !goToNextLevel)
+        if(currentCrowd.transform.childCount==0 && !goToNextLevel )
         {
-           
+            Debug.Log("Next Level");
             goToNextLevel = true;
-            StartCoroutine(LevelManager.instance.NextLevel(2.0f));
-            
+
+            StartCoroutine(CollectCoin());
         }
     }
     public void CreateLevel(int size,LevelProperties levelProperties)
@@ -140,11 +142,16 @@ public class LevelManager : MonoBehaviour
     public IEnumerator LoadSameLevel(float second)
     {
         yield return new WaitForSeconds(second);
+        CameraManager.INSTANCE.canFollow = true;
         DestroyAll();
         LoadLevel(level);
         PlayerPrefs.SetInt("level", level);
         PlayerPrefs.Save();
-        TinySauce.OnGameStarted("LevelManager_NextLevel-" + "Level-" + (level) +"Try_Level-"+(++deathCountSameLevel).ToString()+ "_Time-" + (int)Time.time);
+        TinySauce.OnGameStarted("LevelManager_LoadSameLevel-" + "Level-" + (level) +"Try_Level-"+(++deathCountSameLevel).ToString()+ "_Time-" + (int)Time.time);
+    }
+    public void GameOver(float second)
+    {
+        StartCoroutine(LoadSameLevel(second));
     }
     private void DestroyAll()
     {
@@ -183,5 +190,26 @@ public class LevelManager : MonoBehaviour
         Person.currentFront = null;
         ScrollBar.INSTANCE.ResetProgressBar();
         goToNextLevel = false;
+        coins.Clear();
+    }
+private IEnumerator CollectCoin()
+    {
+        Vector3 startPosition = Vector3.zero;
+        yield return new WaitForSeconds(1.0f);
+        for (int i = 0; i < coins.Count; i++)
+        {
+            float timeStep = 0f;
+            startPosition = coins[i].transform.position;
+            while (timeStep < 1)
+            {
+
+                coins[i].transform.position = startPosition + new Vector3(0, coinCurve.Evaluate(timeStep), 0);
+                timeStep += Time.deltaTime* 10.0f;
+                yield return new WaitForEndOfFrame();
+            }
+            Destroy(coins[i].transform.gameObject);
+        }
+       
+        StartCoroutine(LevelManager.instance.NextLevel(2.0f));
     }
 }

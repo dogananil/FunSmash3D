@@ -62,7 +62,7 @@ public class Person : MonoBehaviour
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
             CameraManager.INSTANCE.canFollow = false;
 
-            Debug.Log("Coin");
+
             BombPerson();
             Die();
 
@@ -147,7 +147,6 @@ public class Person : MonoBehaviour
         float radius = 2.0f;
         float upforce = 1.0f;
         this.personBoomEffect.Play(true);
-        GameObject coinParent=null;
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, radius);
         foreach(Collider hit in colliders)
         {
@@ -156,16 +155,17 @@ public class Person : MonoBehaviour
             {
                 rig.AddExplosionForce(power*this.transform.localScale.magnitude, this.transform.position, radius, upforce, ForceMode.Impulse);
                 hit.enabled = false;
-                // rig.AddForceAtPosition((rig.transform.position-transform.position ).normalized * power*this.transform.localScale.magnitude, this.transform.position-Vector3.down*0.25f, ForceMode.Impulse);
-                coinParent = hit.transform.parent.transform.gameObject;
-                hit.transform.SetParent(coinParent.transform.parent);
+                LevelManager.instance.coins.Remove(hit.gameObject);
                 Destroy(hit.transform.gameObject,1.0f);
+                if (LevelManager.instance.coins.Count == 0)
+                {
+                    LevelManager.instance.goToNextLevel = true;
+                    LevelManager.instance.GameOver(1.0f);
+                    return;
+                }
             }
+            
         }
-        if(coinParent.transform.childCount==0)
-        {
-            Debug.Log("Game Over");
-            StartCoroutine(LevelManager.instance.LoadSameLevel(1.0f));
-        }
+        
     }
 }
