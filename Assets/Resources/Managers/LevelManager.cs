@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Next Level");
             goToNextLevel = true;
-
+            CameraManager.INSTANCE.canFollow = false;
             StartCoroutine(CollectCoin());
         }
     }
@@ -65,6 +65,8 @@ public class LevelManager : MonoBehaviour
             levelBase.transform.localPosition = start;
             start += new Vector3(chillBase.GetComponent<MeshRenderer>().bounds.size.x, 0, 0);
         }
+
+        CameraManager.INSTANCE.Reset();
         GetCrowd(levelProperties.crowdSize);
     }
     public void LoadLevel(int level)
@@ -194,6 +196,7 @@ public class LevelManager : MonoBehaviour
     }
 private IEnumerator CollectCoin()
     {
+        CameraManager.INSTANCE.canFollow = false;
         Vector3 startPosition = Vector3.zero;
         yield return new WaitForSeconds(1.0f);
         for (int i = 0; i < coins.Count; i++)

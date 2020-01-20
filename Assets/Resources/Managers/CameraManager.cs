@@ -24,6 +24,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] public AnimationCurve panCurve;
     [System.NonSerialized] public Vector3 panOffset = Vector3.zero;
     private Transform currentFrontPerson;
+    public bool startCameraBool;
    
     
     void Awake()
@@ -43,7 +44,7 @@ public class CameraManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (LevelManager.instance.currentCrowd != null && LevelManager.instance.currentCrowd.transform.childCount!=0)
+        if (LevelManager.instance.currentCrowd != null )
         {
 
 
@@ -98,9 +99,9 @@ public class CameraManager : MonoBehaviour
     {
         transform.position = startPosition;
         targetPosition = startPosition;
-        canFollow = false;
+        //canFollow = false;
         followSpeed = 1.0f;
-        followOffset = Vector3.up;
+        //followOffset = Vector3.up;
     }
 
     public void Shake(float magnitude, float speed)
