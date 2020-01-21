@@ -11527,6 +11527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSystem: {fileID: 1650980886}
   deathTrailSystem: {fileID: 363954179}
+  goldPopSystem: {fileID: 5296164554351581318}
+  dollPopSystem: {fileID: 887661149315702758}
 --- !u!1 &1745741650
 GameObject:
   m_ObjectHideFlags: 0

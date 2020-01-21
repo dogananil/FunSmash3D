@@ -7,6 +7,8 @@ public class ParticleManager : MonoBehaviour
     [System.NonSerialized] public static ParticleManager instance;
     [SerializeField] public ParticleSystem hitSystem;
     [SerializeField] public ParticleSystem deathTrailSystem;
+    [SerializeField] public ParticleSystem goldPopSystem;
+    [SerializeField] public ParticleSystem dollPopSystem;
 
     void Awake()
     {
@@ -28,6 +30,13 @@ public class ParticleManager : MonoBehaviour
             case SYSTEM.DEATH_TRAIL:
                 ps = deathTrailSystem;
                 break;
+            case SYSTEM.GOLD_POP:
+                ps = goldPopSystem;
+                break;
+            case SYSTEM.DOLL_POP:
+                ps = dollPopSystem;
+                break;
+
         }
         if (color != Color.black)
         {
@@ -57,6 +66,6 @@ public class ParticleManager : MonoBehaviour
 
     public enum SYSTEM
     {
-        HIT_SYSTEM, DEATH_TRAIL
+        HIT_SYSTEM, DEATH_TRAIL , GOLD_POP, DOLL_POP
     }
 }

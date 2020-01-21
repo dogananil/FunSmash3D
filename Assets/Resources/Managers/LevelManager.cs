@@ -23,7 +23,6 @@ public class LevelManager : MonoBehaviour
     private int deathCountSameLevel;
     public List<GameObject> coins = new List<GameObject>();
     public AnimationCurve coinCurve;
-
     private void Awake()
     {
         instance = this;
@@ -208,8 +207,10 @@ private IEnumerator CollectCoin()
 
                 coins[i].transform.position = startPosition + new Vector3(0, coinCurve.Evaluate(timeStep), 0);
                 timeStep += Time.deltaTime* 10.0f;
+               
                 yield return new WaitForEndOfFrame();
             }
+            ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.GOLD_POP, coins[i].transform.position, Color.yellow, 20);
             Destroy(coins[i].transform.gameObject);
         }
        
