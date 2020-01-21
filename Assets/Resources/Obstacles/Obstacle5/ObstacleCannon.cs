@@ -39,6 +39,7 @@ public class ObstacleCannon : Obstacle
     }
     private void Start()
     {
+        base.Start();
         start = body.transform.localPosition + transform.position;
     }
 

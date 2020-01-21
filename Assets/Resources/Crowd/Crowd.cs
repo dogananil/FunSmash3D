@@ -32,7 +32,7 @@ public class Crowd : MonoBehaviour
             if ((i+1)%modRed==0)
             {
                 StartCoroutine(ScaleRoutine(crowd[i].transform));
-                crowd[i].personBoomEffect.GetComponent<Renderer>().material.color = Color.red;
+                crowd[i].personBoomEffect.GetComponent<Renderer>().material.color = Color.magenta;
                 crowd[i].personBoomEffect.startSize = 2.0f;
             }
             crowd[i].speed = UnityEngine.Random.Range(speedMin, speedMax);
@@ -52,7 +52,7 @@ public class Crowd : MonoBehaviour
             timeStep += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        child.GetComponent<SkinnedMeshRenderer>().material.color = Color.red;
+        child.GetComponent<SkinnedMeshRenderer>().material.color = Color.magenta;
     }
 
 }

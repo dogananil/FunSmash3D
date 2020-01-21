@@ -4809,7 +4809,7 @@ MonoBehaviour:
     slowMotionSpeed: 0
   slowMotionSpeed: 0
   deatCount: {fileID: 7891647060807287084}
-  baseColor: {r: 0.43529412, g: 0, b: 0.02745098, a: 1}
+  baseColor: {r: 0.69334215, g: 0.22694907, b: 0.9433962, a: 1}
   baseRenderer: {fileID: 7735707821801703791}
   obstacleParticle: {fileID: 2071074525632437662}
   smash: 0

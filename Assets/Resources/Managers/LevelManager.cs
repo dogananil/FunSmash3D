@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
                 /*Time.fixedDeltaTime = Time.fixedDeltaTime * 3.0f;
                 Time.maximumDeltaTime = Time.maximumDeltaTime * 3.0f;*/
             }
-            Debug.Log("Next Level");
+
             goToNextLevel = true;
             CameraManager.INSTANCE.canFollow = false;
             StartCoroutine(CollectCoin());
