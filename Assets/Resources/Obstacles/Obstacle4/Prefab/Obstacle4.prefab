@@ -4809,6 +4809,8 @@ MonoBehaviour:
     slowMotionSpeed: 0
   slowMotionSpeed: 0
   deatCount: {fileID: 7891647060807287084}
+  baseColor: {r: 0.43529412, g: 0, b: 0.02745098, a: 1}
+  baseRenderer: {fileID: 7735707821801703791}
   obstacleParticle: {fileID: 2071074525632437662}
   smash: 0
   textCurve:

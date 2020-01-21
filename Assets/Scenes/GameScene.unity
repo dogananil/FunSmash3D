@@ -6192,6 +6192,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  finishBaseBool: 0
 --- !u!1 &929205356
 GameObject:
   m_ObjectHideFlags: 0
@@ -11619,7 +11620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePool:
   - {fileID: 775281180579899479, guid: 8cc5af2b72afcdc44b1188268ed440a2, type: 3}
-  - {fileID: 5877844785097926269, guid: dd16c28ad19fb5849bade00ef15e9557, type: 3}
+  - {fileID: 2802822962263447084, guid: dd16c28ad19fb5849bade00ef15e9557, type: 3}
   - {fileID: 2924663010302275076, guid: c660e6cafce15624c98a41b0af97dfaf, type: 3}
   - {fileID: 1881713687161581297, guid: b176cbded21825544a2a73a95e5f9e8f, type: 3}
   - {fileID: 4598591934130198051, guid: f62d1eadfec61f3478b243d8edebb8c3, type: 3}

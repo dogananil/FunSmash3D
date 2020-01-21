@@ -21,6 +21,7 @@ public class ObstacleBox : Obstacle
 
     private void Start()
     {
+        base.Start();
         start = body.transform.localPosition + transform.position;
 
     }

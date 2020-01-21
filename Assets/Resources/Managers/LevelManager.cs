@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     private int deathCountSameLevel;
     public List<GameObject> coins = new List<GameObject>();
     public AnimationCurve coinCurve;
+    public bool finishBaseBool;
     private void Awake()
     {
         instance = this;
@@ -40,6 +41,12 @@ public class LevelManager : MonoBehaviour
     {
         if(currentCrowd.transform.childCount==0 && !goToNextLevel )
         {
+            if(!finishBaseBool)
+            {
+               // Time.timeScale = 3.0f;
+                /*Time.fixedDeltaTime = Time.fixedDeltaTime * 3.0f;
+                Time.maximumDeltaTime = Time.maximumDeltaTime * 3.0f;*/
+            }
             Debug.Log("Next Level");
             goToNextLevel = true;
             CameraManager.INSTANCE.canFollow = false;
@@ -191,29 +198,35 @@ public class LevelManager : MonoBehaviour
         Person.currentFront = null;
         ScrollBar.INSTANCE.ResetProgressBar();
         goToNextLevel = false;
+        finishBaseBool = false;
         coins.Clear();
     }
 private IEnumerator CollectCoin()
     {
         CameraManager.INSTANCE.canFollow = false;
         Vector3 startPosition = Vector3.zero;
-        yield return new WaitForSeconds(1.0f);
+        
+        yield return new WaitForSeconds(1.5f);
+        Time.timeScale = 1.0f;
         for (int i = 0; i < coins.Count; i++)
         {
             float timeStep = 0f;
             startPosition = coins[i].transform.position;
-            while (timeStep < 1)
+            /*while (timeStep < 1)
             {
 
                 coins[i].transform.position = startPosition + new Vector3(0, coinCurve.Evaluate(timeStep), 0);
                 timeStep += Time.deltaTime* 10.0f;
                
                 yield return new WaitForEndOfFrame();
-            }
+            }*/
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.GOLD_POP, coins[i].transform.position, Color.yellow, 20);
             Destroy(coins[i].transform.gameObject);
+            yield return new WaitForSeconds(0.025f);
         }
-       
+       // Time.timeScale = 1.0f;
+        /*Time.fixedDeltaTime = Time.fixedDeltaTime / 3.0f;
+        Time.maximumDeltaTime = Time.maximumDeltaTime / 3.0f;*/
         StartCoroutine(LevelManager.instance.NextLevel(2.0f));
     }
 }

@@ -1,8 +1,8 @@
 {
   "crowdColor":"#F2505D",
   "crowdSize": 30,
-  "crowdMinSpeed":3.0,
-  "crowdMaxSpeed":4.0,
+   "crowdMinSpeed":4.0,
+  "crowdMaxSpeed":4.2,
   "percantageLevelFinish":0.3,
   "percentageRedPerson":0.1,
   "levelPieces": [

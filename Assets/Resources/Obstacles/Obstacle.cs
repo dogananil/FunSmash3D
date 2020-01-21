@@ -12,13 +12,23 @@ public abstract class Obstacle : MonoBehaviour
     [SerializeField] public float slowMotionSpeed;
     [SerializeField] public TextMeshPro deatCount;
     [SerializeField]public static int deathCounter = 0;
+    [SerializeField]public  Color baseColor ;
+    [SerializeField]public  GameObject baseRenderer;
      public GameObject obstacleParticle;
+
 
     public bool smash;
     public AnimationCurve textCurve;
 
- 
 
+    public void Start()
+    {
+
+        if (baseRenderer != null)
+        {
+            baseRenderer.GetComponent<MeshRenderer>().material.SetColor("_Color", baseColor) ;
+        }
+    }
     public void Activate()
     {
         //  activate = true;
@@ -119,7 +129,7 @@ public abstract class Obstacle : MonoBehaviour
     }
     public IEnumerator TextAnimation()
     {
-        Vector3 startPosition = LevelManager.instance.currentEnemy.transform.position;
+        Vector3 startPosition = LevelManager.instance.currentEnemy.transform.position +Vector3.right*10.0f;
         this.deatCount.transform.gameObject.SetActive(true);
         this.deatCount.transform.forward = Camera.main.transform.forward;
         ScoreToString();

@@ -1,13 +1,13 @@
 {
   "crowdColor":"#F2505D",
   "crowdSize": 50,
-  "crowdMinSpeed":3.5,
-  "crowdMaxSpeed":4.5,
+  "crowdMinSpeed":4.2,
+  "crowdMaxSpeed":4.4,
   "percantageLevelFinish":0.4,
   "percentageRedPerson":0.1,
 
   "levelPieces": [
-  {
+	 {
       "obstacleType": 0,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.0
@@ -18,9 +18,19 @@
 	  "slowMotionSpeed":1.5
     },
 	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
+    },
+	{
       "obstacleType": 4,
       "obstacleSpeed": 2.0,
 	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
 	{
       "obstacleType": 2,
@@ -28,9 +38,19 @@
 	  "slowMotionSpeed":1.5
     },
 	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
+    },
+	{
       "obstacleType": 4,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
 	{
       "obstacleType": 3,
@@ -38,9 +58,19 @@
 	  "slowMotionSpeed":1.5
     },
 	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
+    },
+	{
       "obstacleType": 4,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
 	{
       "obstacleType": 5,
@@ -48,9 +78,19 @@
 	  "slowMotionSpeed":1.5
     },
 	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
+    },
+	{
       "obstacleType": 4,
       "obstacleSpeed": 1.0,
 	  "slowMotionSpeed":1.5
+    },
+	{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.0
     },
     {
       "obstacleType": 6,

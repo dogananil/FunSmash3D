@@ -1,8 +1,8 @@
 {
   "crowdColor":"#F2505D",
   "crowdSize": 35,
-  "crowdMinSpeed":3.0,
-  "crowdMaxSpeed":4.0,
+  "crowdMinSpeed":4.0,
+  "crowdMaxSpeed":4.2,
   "percantageLevelFinish":0.35,
   "percentageRedPerson":0.1,
     "levelPieces": [
@@ -36,6 +36,11 @@
             "obstacleSpeed": 1.0,
             "slowMotionSpeed": 1.5
         },
+		{
+            "obstacleType": 0,
+            "obstacleSpeed": 1.0,
+            "slowMotionSpeed": 1.5
+        },
         {
             "obstacleType": 3,
             "obstacleSpeed": 1.0,
@@ -51,6 +56,11 @@
             "obstacleSpeed": 1.0,
             "slowMotionSpeed": 1.5
         },
+		{
+      "obstacleType": 0,
+      "obstacleSpeed": 1.0,
+	  "slowMotionSpeed":1.5
+    },
         {
             "obstacleType": 6,
             "obstacleSpeed": 1.0,

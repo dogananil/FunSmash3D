@@ -60,9 +60,18 @@ public class Person : MonoBehaviour
             this.GetComponent<Animator>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
+            LevelManager.instance.currentEnemy.smash = true;
+            if (!LevelManager.instance.finishBaseBool)
+            {
+                LevelManager.instance.finishBaseBool = true;
+                //Time.timeScale = 3.0f;
+                /*Time.fixedDeltaTime = Time.fixedDeltaTime * 3.0f;
+                Time.maximumDeltaTime = Time.maximumDeltaTime * 3.0f;*/
+            }
+                
             CameraManager.INSTANCE.canFollow = false;
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.DOLL_POP, transform.position, this.transform.GetComponent<SkinnedMeshRenderer>().material.color, 20);
-
+           
             BombPerson();
             Die();
 
@@ -71,6 +80,7 @@ public class Person : MonoBehaviour
         {
             dead = true;
             ParticleManager.instance.PlaySystem(ParticleManager.SYSTEM.DOLL_POP, transform.position, this.transform.GetComponent<SkinnedMeshRenderer>().material.color, 20);
+            
             this.GetComponent<Animator>().enabled = false;
             this.GetComponent<BoxCollider>().enabled = false;
             this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
@@ -106,6 +116,7 @@ public class Person : MonoBehaviour
         this.personPrefab.transform.SetParent(PersonPool.INSTANCE.transform);
         this.personPrefab.GetComponent<Animator>().enabled = true;
         this.personPrefab.transform.position = Vector3.zero;
+        
         stop = false;
 
     }

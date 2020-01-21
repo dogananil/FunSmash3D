@@ -6,7 +6,6 @@ public class PlaceCoin : MonoBehaviour
 {
     [SerializeField] private GameObject coin;
     [SerializeField] private int coinNumber; 
-    [SerializeField]private Transform finishBoxTransform;
     private Vector3 start = new Vector3(0f,0.5f,0f);
     // Start is called before the first frame update
     void Start()

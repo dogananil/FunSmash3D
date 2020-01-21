@@ -28,7 +28,7 @@ public class ScrollBar : MonoBehaviour
     public void LoadProgessBar()
     {
         slider.value = (float)((float)LevelManager.instance.levelProperties.crowdSize-LevelManager.instance.currentCrowd.transform.childCount) /(float)LevelManager.instance.levelProperties.crowdSize;
-       // deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + "/" + (float)LevelManager.instance.levelProperties.crowdSize;
+        deathCount.text = ((float)LevelManager.instance.levelProperties.crowdSize - LevelManager.instance.currentCrowd.transform.childCount) + "/" + (float)LevelManager.instance.levelProperties.crowdSize;
         //if(percantageLevelFinish.value<=slider.value && !confetiBool)
         //{
         //    //skullIcon.color = Color.green;
